@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: lightning_press_development_SAMPLE
+  database: lightning_press_development_joniy
   pool: 5
   username: lightning_press
   password:
@@ -46,15 +46,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: lightning_press_test
+  database: lightning_press_test_joniy
   pool: 5
-  username: lightning_press_SAMPLE
+  username: lightning_press
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: lightning_press_production
+  database: lightning_press_production_joniy
   pool: 5
-  username: lightning_press_SAMPLE
+  username: lightning_press
   password:
