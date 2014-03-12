@@ -17,9 +17,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: lightning_press_development_SAMPLE
+  database: lightning_press_development
   pool: 5
-  username: lightning_press
+  username: lightning_press_SAMPLE
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
