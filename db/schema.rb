@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312124244) do
+ActiveRecord::Schema.define(version: 20140313113843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "candidates", force: true do |t|
+    t.integer  "request_id"
+    t.integer  "member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "lightningtalks", force: true do |t|
     t.text     "name"
@@ -22,6 +29,66 @@ ActiveRecord::Schema.define(version: 20140312124244) do
     t.datetime "performance_date"
     t.text     "content_path"
     t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lt_comments", force: true do |t|
+    t.integer  "member_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.integer  "lightningtalk_id"
+    t.datetime "updated_at"
+  end
+
+  create_table "lt_preferences", force: true do |t|
+    t.integer  "lightningtalk_id"
+    t.integer  "grade"
+    t.integer  "member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "members", force: true do |t|
+    t.text     "name"
+    t.text     "student_number"
+    t.text     "account"
+    t.text     "password"
+    t.boolean  "is_admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "request_comments", force: true do |t|
+    t.integer  "member_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.integer  "request_id"
+    t.datetime "updated_at"
+  end
+
+  create_table "request_notifications", force: true do |t|
+    t.integer  "receiver_id"
+    t.integer  "request_id"
+    t.integer  "response_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "request_preferences", force: true do |t|
+    t.integer  "lightningtalk_id"
+    t.integer  "grade"
+    t.integer  "member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "requests", force: true do |t|
+    t.integer  "member_id"
+    t.text     "title"
+    t.text     "content"
+    t.integer  "presenter_id"
+    t.datetime "created_at"
+    t.integer  "satus"
     t.datetime "updated_at"
   end
 

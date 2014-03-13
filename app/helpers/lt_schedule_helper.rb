@@ -1,0 +1,2 @@
+module LtScheduleHelper
+end

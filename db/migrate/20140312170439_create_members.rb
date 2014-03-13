@@ -5,7 +5,7 @@ class CreateMembers < ActiveRecord::Migration
       t.text :student_number
       t.text :account
       t.text :password
-      t.bool :is_admin
+      t.boolean :is_admin
 
       t.timestamps
     end
