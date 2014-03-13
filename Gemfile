@@ -44,5 +44,6 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group do
+group :development do
+  gem 'pry-rails'
 end
