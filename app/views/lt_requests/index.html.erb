@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>リクエストページ</title>
+  </head>
+  <body>
+    <h1>リクエスト一覧</h1>
+    <p>新規作成</p>
+    <hr>
+
+    <%= @requests.each do |request|  %>
+
+    <table border = 1>
+    <tr>
+      <th>リクエストタイトル</th>
+      <td><%= request.title %></td>
+    </tr>
+    <tr>
+      <th>作成者</th>
+      <td><%= request.contributor.name %></td>
+    </tr>
+    <tr>
+      <th>内容</th>
+      <td><%= request.content %></td>
+    </tr>
+    <tr>
+      <th>担当者</th>
+      <td><%= request.presenter.name %></td>
+    </tr>
+    <tr>
+      <th>書き込み日時</th>
+      <td><%= request.created_at %></td>
+    </tr>
+    </table>
+
+    <% end %>
+  </body>
+</html>
