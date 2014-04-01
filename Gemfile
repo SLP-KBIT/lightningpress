@@ -47,3 +47,5 @@ end
 group :development do
   gem 'pry-rails'
 end
+
+gem 'event-calendar', :require => 'event_calendar'

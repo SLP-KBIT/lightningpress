@@ -1,4 +1,5 @@
 LightningPress::Application.routes.draw do
+  get '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
   get "lt_schedule/index"
 
   # The priority is based upon order of creation: first created -> highest priority.
