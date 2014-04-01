@@ -1,0 +1,2 @@
+module LtRequestsHelper
+end
