@@ -1,40 +1,73 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-                 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <title>リクエストページ</title>
-  </head>
-  <body>
-    <h1>リクエスト一覧</h1>
-    <p>新規作成</p>
-    <hr>
+<h1>リクエスト一覧</h1>
+<p class="btn btn-primary btn-lg" >新規作成</p>
+<hr>
 
-    <%= @requests.each do |request|  %>
-
-    <table border = 1>
-    <tr>
-      <th>リクエストタイトル</th>
-      <td><%= request.title %></td>
-    </tr>
-    <tr>
-      <th>作成者</th>
-      <td><%= request.contributor.name %></td>
-    </tr>
-    <tr>
-      <th>内容</th>
-      <td><%= request.content %></td>
-    </tr>
-    <tr>
-      <th>担当者</th>
-      <td><%= request.presenter.name %></td>
-    </tr>
-    <tr>
-      <th>書き込み日時</th>
-      <td><%= request.created_at %></td>
-    </tr>
-    </table>
-
+<% @requests.each do |request|  %>
+<div class="row ltbox">
+  <div class="col-md-7">
+    <div class="row ltinbox">
+      <div class="col-md-3"> リクエストタイトル </div>
+      <div class="col-md-4"> <%= request.title %> </div>
+    </div>
+    <div class="row ltinbox">
+      <div class="col-md-3"> 作成者 </div>
+      <div class="col-md-4"> <%= request.contributor.name %> </div>
+    </div>
+    <div class="row ltinbox">
+      <div class="col-md-3"> 内容 </div>
+      <div class="col-md-4"> <%= request.content %> </div>
+    </div>
+    <div class="row ltinbox">
+      <div class="col-md-3"> 担当者 </div>
+      <div class="col-md-4"> <%= request.presenter.name %> </div>
+    </div>
+    <div class="row ltinbox">
+      <div class="col-md-3"> 書き込み日時 </div>
+      <div class="col-md-4"> <%= request.created_at.strftime('%F') %> </div>
+    </div>
+    <div class="row ltinbox">
+      <div class="col-md-3">コメント</div>
+    </div>
+    <% request.request_comments.each do |request_comment| %>
+      <div class="row ltinbox">
+        <div class="col-md-3"><%= request_comment.member.account %></div>
+        <div class="col-md-4"><%= request_comment.created_at.strftime('%F') %></div>
+        <br>
+        <div class="col-md-7"><%= request_comment.content %></div>
+      </div>
     <% end %>
-  </body>
-</html>
+  </div>
+</div>
+
+<!--   <th>書き込み日時</th> -->
+<!--   <td><%= request.created_at.strftime('%F') %></td> -->
+<!-- </tr> -->
+<% end %>
+
+
+
+<!-- <table border = 1> -->
+<!-- <% @requests.each do |request|  %> -->
+<!-- <tr> -->
+<!--   <th>リクエストタイトル</th> -->
+<!--   <td><%= request.title %></td> -->
+<!-- </tr> -->
+<!-- <tr> -->
+<!--   <th>作成者</th> -->
+<!--   <td><%= request.contributor.name %></td> -->
+<!-- </tr> -->
+<!-- <tr> -->
+<!--   <th>内容</th> -->
+<!--   <td><%= request.content %></td> -->
+<!-- </tr> -->
+<!-- <tr> -->
+<!--   <th>担当者</th> -->
+<!--   <td><%= request.presenter.name %></td> -->
+<!-- </tr> -->
+<!-- <tr> -->
+<!--   <th>書き込み日時</th> -->
+<!--   <td><%= request.created_at.strftime('%F') %></td> -->
+<!-- </tr> -->
+<!-- </table> -->
+
+<!-- <% end %> -->
