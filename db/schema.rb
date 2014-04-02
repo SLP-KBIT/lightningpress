@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140401161102) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "candidates", force: true do |t|
     t.integer  "request_id"
     t.integer  "member_id"
@@ -93,12 +90,12 @@ ActiveRecord::Schema.define(version: 20140401161102) do
   end
 
   create_table "requests", force: true do |t|
-    t.integer  "member_id"
+    t.integer  "contributor_id"
     t.text     "title"
     t.text     "content"
     t.integer  "presenter_id"
     t.datetime "created_at"
-    t.integer  "satus"
+    t.integer  "status"
     t.datetime "updated_at"
   end
 
