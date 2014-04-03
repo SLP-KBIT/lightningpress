@@ -6,6 +6,7 @@ class CreateMembers < ActiveRecord::Migration
       t.text :account
       t.text :password
       t.boolean :is_admin
+      t.boolean :is_denied
 
       t.timestamps
     end

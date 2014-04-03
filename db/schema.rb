@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140401161102) do
     t.text     "account"
     t.text     "password"
     t.boolean  "is_admin"
+    t.boolean  "is_denied"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,11 +74,12 @@ ActiveRecord::Schema.define(version: 20140401161102) do
     t.text     "content"
     t.datetime "created_at"
     t.integer  "request_id"
+    t.boolean  "is_denied"
     t.datetime "updated_at"
   end
 
   create_table "request_notifications", force: true do |t|
-    t.integer  "receiver_id"
+    t.integer  "member_id"
     t.integer  "request_id"
     t.integer  "response_status"
     t.datetime "created_at"
@@ -85,7 +87,7 @@ ActiveRecord::Schema.define(version: 20140401161102) do
   end
 
   create_table "request_preferences", force: true do |t|
-    t.integer  "lightningtalk_id"
+    t.integer  "request_id"
     t.integer  "grade"
     t.integer  "member_id"
     t.datetime "created_at"
@@ -93,7 +95,7 @@ ActiveRecord::Schema.define(version: 20140401161102) do
   end
 
   create_table "requests", force: true do |t|
-    t.integer  "member_id"
+    t.integer  "contributor_id"
     t.text     "title"
     t.text     "content"
     t.integer  "presenter_id"

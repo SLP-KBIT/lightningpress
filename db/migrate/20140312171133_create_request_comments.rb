@@ -5,6 +5,7 @@ class CreateRequestComments < ActiveRecord::Migration
       t.text :content
       t.datetime :created_at
       t.integer :request_id
+      t.boolean :is_denied
 
       t.timestamps
     end

@@ -1,7 +1,7 @@
 class CreateRequests < ActiveRecord::Migration
   def change
     create_table :requests do |t|
-      t.integer :member_id
+      t.integer :contributor_id
       t.text :title
       t.text :content
       t.integer :presenter_id
