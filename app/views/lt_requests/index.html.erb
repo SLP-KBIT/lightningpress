@@ -1,6 +1,41 @@
 <h1>リクエスト一覧</h1>
-<p class="btn btn-primary btn-lg" >新規作成</p>
+<button data-toggle="modal" href="#myModal" class="btn btn-primary">新規作成</button>
 <hr>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 class="modal-title">リクエスト新規作成</h3>
+      </div>
+      <%= form_for @request_new, :url => { :action => "create" } do |form| %>
+      <div class="modal-body">
+        <h4>
+          <%= form.label :title, "タイトル" %>
+          <br>
+          <%= form.text_field :title %>
+        </h4>
+        <h4>
+          <%= form.label :content, "--内容--" %>
+          <br>
+          <%= form.text_area :content, :rows => 10, :cols => 40 %>
+        </h4>
+        <h4>
+          <div class="dropdown">
+            <%= form.label :presenter__id, "担当者" %>
+            <br>
+            <%= form.collection_select :presenter_id, Member.all, :id, :account %>
+          </div>
+        </h4>
+      <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">登録</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <% @requests.each do |request|  %>
 <div class="row ltbox">
@@ -39,35 +74,4 @@
   </div>
 </div>
 
-<!--   <th>書き込み日時</th> -->
-<!--   <td><%= request.created_at.strftime('%F') %></td> -->
-<!-- </tr> -->
 <% end %>
-
-
-
-<!-- <table border = 1> -->
-<!-- <% @requests.each do |request|  %> -->
-<!-- <tr> -->
-<!--   <th>リクエストタイトル</th> -->
-<!--   <td><%= request.title %></td> -->
-<!-- </tr> -->
-<!-- <tr> -->
-<!--   <th>作成者</th> -->
-<!--   <td><%= request.contributor.name %></td> -->
-<!-- </tr> -->
-<!-- <tr> -->
-<!--   <th>内容</th> -->
-<!--   <td><%= request.content %></td> -->
-<!-- </tr> -->
-<!-- <tr> -->
-<!--   <th>担当者</th> -->
-<!--   <td><%= request.presenter.name %></td> -->
-<!-- </tr> -->
-<!-- <tr> -->
-<!--   <th>書き込み日時</th> -->
-<!--   <td><%= request.created_at.strftime('%F') %></td> -->
-<!-- </tr> -->
-<!-- </table> -->
-
-<!-- <% end %> -->
