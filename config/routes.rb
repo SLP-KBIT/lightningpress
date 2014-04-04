@@ -1,8 +1,9 @@
 LightningPress::Application.routes.draw do
   get '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
   get "lt_schedule/index"
-  resources :lightningtalks
 
+  resources :lightningtalks
+  resources :lt_requests
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

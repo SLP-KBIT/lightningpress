@@ -6,7 +6,7 @@ class CreateRequests < ActiveRecord::Migration
       t.text :content
       t.integer :presenter_id
       t.datetime :created_at
-      t.integer :satus
+      t.integer :status
 
       t.timestamps
     end
