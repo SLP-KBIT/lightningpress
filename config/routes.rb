@@ -6,6 +6,10 @@ LightningPress::Application.routes.draw do
   resources :lt_requests
   resources :calendar
 
+  root :to => "users#top"
+  resources :users
+  resources :lt_requests
+  resources :logins 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

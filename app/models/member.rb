@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: members
+#
+#  id              :integer          not null, primary key
+#  name            :text
+#  student_number  :text
+#  account         :text
+#  password_digest :text
+#  is_admin        :boolean
+#  flag            :boolean
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 class Member < ActiveRecord::Base
   has_many :lightningtalks
   has_many :lt_comments
