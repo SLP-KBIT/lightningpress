@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 class LoginsController < ApplicationController
+
+  skip_before_filter :login_filter
+
   def index
     render "new"
   end
