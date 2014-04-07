@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 class LtRequestsController < ApplicationController
-  before_action :sample_filter
-  def index
+    def index
     @requests = Request.all
     @request_new = Request.new
     @member = Member.all
@@ -12,13 +11,10 @@ class LtRequestsController < ApplicationController
     @request.save
     redirect_to lt_requests_path
   end
-  def requests_params
-    params.require(:request).permit(:title, :content, :presenter_id, :contributor_id)
-  end
 
   private
-
-  def sample_filter
-    redirect_to logins_path unless session[:member_id]
+  
+  def requests_params
+    params.require(:request).permit(:title, :content, :presenter_id, :contributor_id)
   end
 end
