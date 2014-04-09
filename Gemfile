@@ -50,10 +50,9 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 group :development do
   gem 'pry-rails'
+  gem 'annotate'
+  gem 'quiet_assets'
 end
-
-#Use event-calendar
-gem 'event-calendar', :require => 'event_calendar'
 
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
@@ -63,3 +62,6 @@ gem 'pry-rails'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 gem 'simple_form'
+
+#Use event-calendar
+gem 'event-calendar', :require => 'event_calendar'
