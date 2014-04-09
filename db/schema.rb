@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140313113843) do
+ActiveRecord::Schema.define(version: 20140403125024) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "candidates", force: true do |t|
     t.integer  "request_id"
@@ -49,8 +52,9 @@ ActiveRecord::Schema.define(version: 20140313113843) do
     t.text     "name"
     t.text     "student_number"
     t.text     "account"
-    t.text     "password"
+    t.text     "password_digest"
     t.boolean  "is_admin"
+    t.boolean  "flag"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
