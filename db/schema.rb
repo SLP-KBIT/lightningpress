@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403125024) do
+ActiveRecord::Schema.define(version: 20140409133103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140403125024) do
     t.text     "content_path"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "sumally"
   end
 
   create_table "lt_comments", force: true do |t|
@@ -76,7 +77,7 @@ ActiveRecord::Schema.define(version: 20140403125024) do
   end
 
   create_table "request_preferences", force: true do |t|
-    t.integer  "lightningtalk_id"
+    t.integer  "request_id"
     t.integer  "grade"
     t.integer  "member_id"
     t.datetime "created_at"
