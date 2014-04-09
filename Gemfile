@@ -47,6 +47,8 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 group :development do
   gem 'pry-rails'
+  gem 'annotate'
+  gem 'quiet_assets'
 end
 
 gem 'pry-rails'
