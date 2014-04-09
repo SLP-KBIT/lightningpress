@@ -14,7 +14,6 @@
 #
 
 class Member < ActiveRecord::Base
-<<<<<<< HEAD
   has_many :events
 end
 
