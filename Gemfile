@@ -51,8 +51,6 @@ group :development do
   gem 'quiet_assets'
 end
 
-gem 'pry-rails'
-
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 gem 'simple_form'
