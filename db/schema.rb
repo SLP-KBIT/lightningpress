@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140401161102) do
 ActiveRecord::Schema.define(version: 20140403125024) do
+ActiveRecord::Schema.define(version: 20140409133103) do
 
   create_table "candidates", force: true do |t|
     t.integer  "request_id"
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20140403125024) do
     t.text     "content_path"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "sumally"
   end
 
   create_table "lt_comments", force: true do |t|
@@ -84,7 +86,7 @@ ActiveRecord::Schema.define(version: 20140403125024) do
   end
 
   create_table "request_preferences", force: true do |t|
-    t.integer  "lightningtalk_id"
+    t.integer  "request_id"
     t.integer  "grade"
     t.integer  "member_id"
     t.datetime "created_at"
