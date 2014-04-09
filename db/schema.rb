@@ -12,6 +12,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20140401161102) do
+ActiveRecord::Schema.define(version: 20140403125024) do
 
   create_table "candidates", force: true do |t|
     t.integer  "request_id"
@@ -59,8 +60,9 @@ ActiveRecord::Schema.define(version: 20140401161102) do
     t.text     "name"
     t.text     "student_number"
     t.text     "account"
-    t.text     "password"
+    t.text     "password_digest"
     t.boolean  "is_admin"
+    t.boolean  "flag"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
