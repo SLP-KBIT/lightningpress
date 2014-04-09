@@ -8,7 +8,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3 class="modal-title">リクエスト新規作成</h3>
       </div>
-      <%= simple_form_for @request_new, url: { action: "create" } do |form| %>
+      <%= simple_form_for @request, url: { action: "create" } do |form| %>
       <div class="modal-body">
         <div class="form-group">
           <%= form.label :title, "タイトル" %>
@@ -24,14 +24,14 @@
           <div class="dropdown form-group">
             <%= form.label :presenter_id, "担当者" %>
             <br>
-            <%= form.collection_select :presenter_id, Member.all, :id, :account, class: "form-control", prompt:"unknown" %>
+            <%= form.collection_select :presenter_id, @members, :id, :account, class: "form-control", prompt:"unknown" %>
           </div>
         </h4>
         <h4>
           <div class="dropdown form-group">
             <%= form.label :contributor_id, "作成者" %>
             <br>
-            <%= form.collection_select :contributor_id, Member.all, :id, :account,{}, class: "form-control" %>
+            <%= form.collection_select :contributor_id, @members, :id, :account,{}, class: "form-control" %>
           </div>
         </h4>
       </div>
