@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def login_filter
-    redirect_to logins_path unless session[:member_id]  
+    redirect_to logins_path unless session[:member_id]
   end
 
   helper_method :current_member
