@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class LtRequestsController < ApplicationController
-    def index
+  def index
     @requests = Request.all
     @request = Request.new
     @members = Member.all
