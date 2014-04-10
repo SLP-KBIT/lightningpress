@@ -1,0 +1,51 @@
+<!-- Probably move the stylesheet to you layout. Also make sure you include the javascript. -->
+<%= stylesheet_link_tag "event_calendar" %>
+
+<h1>Calendar</h1>
+
+<%= raw(event_calendar) %>
+
+<!-- Button trigger modal -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  LT作成
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">LT作成</h4>
+      </div>
+      
+      <div class="modal-body">
+        <%= form_for @event, :url => {:action => "create"} do |f| %>
+          <%= f.label :name, 'タイトル'%>
+          <%= f.text_field :name %>
+          <br>
+          <%= f.label :member_id, 'ID'%>
+          <%= f.text_field :member_id %>
+          <br>
+          <%= f.label :start_at, '発表日時'%>
+          <%= f.text_field :start_at %>
+          <br>
+          <%= f.label :content_path, '発表資料'%>
+          <%= f.text_field :content_path %>
+       </div>
+
+       <div class="modal-footer">
+           <%= f.submit "登録", class: "btn btn-primary" %>
+         <% end %>
+       </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

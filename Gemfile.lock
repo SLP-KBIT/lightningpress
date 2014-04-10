@@ -55,6 +55,7 @@ GEM
     coffee-script-source (1.7.0)
     commonjs (0.2.7)
     erubis (2.7.0)
+    event-calendar (2.3.3)
     execjs (2.0.2)
     hike (1.2.3)
     i18n (0.6.9)
@@ -153,6 +154,7 @@ DEPENDENCIES
   annotate
   bcrypt-ruby (~> 3.1.2)
   coffee-rails (~> 4.0.0)
+  event-calendar
   jbuilder (~> 1.2)
   jquery-rails
   less-rails

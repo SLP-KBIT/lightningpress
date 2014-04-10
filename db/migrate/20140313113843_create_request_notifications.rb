@@ -1,7 +1,7 @@
 class CreateRequestNotifications < ActiveRecord::Migration
   def change
     create_table :request_notifications do |t|
-      t.integer :receiver_id
+      t.integer :member_id
       t.integer :request_id
       t.integer :response_status
 
