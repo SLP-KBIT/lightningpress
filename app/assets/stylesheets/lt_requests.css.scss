@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.green-allow {
+  color: green;
+  text-shadow: 1px 3px 1px #999;
+}
+
 .ltbox {
   background-color: #bfbfbf;
   padding: 5px;
@@ -11,4 +16,13 @@
 .ltinbox {
   background-color: #bfbfbf;
   padding: 5px;
+}
+
+.lt_request_content {
+  padding-left: 10px;
+}
+
+.lt_request_box > *{
+  padding-top: 0px;
+  padding-botton: 0px;
 }
