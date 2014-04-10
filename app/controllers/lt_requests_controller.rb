@@ -15,6 +15,14 @@ class LtRequestsController < ApplicationController
   private
 
   def requests_params
-    params.require(:request).permit(:title, :content, :presenter_id, :contributor_id)
+    params.require(:request).permit(
+      :title,
+      :content,
+      :presenter_id, :contributor_id
+    )
+  end
+
+  def hogehoge
+    @request = Request.all
   end
 end
