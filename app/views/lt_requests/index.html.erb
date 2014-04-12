@@ -10,14 +10,7 @@
   <div class="col-md-4 lt_request_box">
     <h2><%= request.title %></h2>
     <p class="lt_request_content"><%= request.content %></p>
-    <% presenter_name = case request.status
-                       when Request::Status::None     then "募集中"
-                       when Request::Status::Waiting  then "申請中"
-                       when Request::Status::Assigned then request.presenter.name
-                       end
-     %>
-
-    <p><%= presenter_name %>&nbsp;<span class="glyphicon glyphicon-arrow-left green-allow"></span>&nbsp;<%= request.contributor.name %></p>
+    <p><%= request.status_name %>&nbsp;<span class="glyphicon glyphicon-arrow-left green-allow"></span>&nbsp;<%= request.contributor.name %></p>
     <p>投稿日時:<%= request.created_at %> </p>
     <ul>
       <li>コメント</li>
