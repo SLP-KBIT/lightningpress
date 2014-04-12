@@ -18,11 +18,8 @@ class LtRequestsController < ApplicationController
     params.require(:request).permit(
       :title,
       :content,
-      :presenter_id, :contributor_id
+      :presenter_id,
+      :contributor_id
     )
-  end
-
-  def hogehoge
-    @request = Request.all
   end
 end
