@@ -27,9 +27,9 @@ class Request < ActiveRecord::Base
   end
 
   def status_name
-    return "担当者無し" if status == Status::None
-    return "承認待ち" if status == Status::Waiting
-    return "承認済み" if status == Status::Assigned
+    return "募集" if status == Status::None
+    return "申請中" if status == Status::Waiting
+    return presenter.name if status == Status::Assigned
   end
 
 end
