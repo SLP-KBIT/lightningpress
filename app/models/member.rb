@@ -14,8 +14,6 @@
 #
 
 class Member < ActiveRecord::Base
-  belongs_to :member
-
   has_many :lightningtalks
   has_many :lt_comments
   has_many :request_comments
@@ -24,7 +22,7 @@ class Member < ActiveRecord::Base
   has_many :lt_preferences
   has_many :request_preferences
   has_many :request_notifications
-  has_many :events
+
   has_secure_password
 
   scope :id_is, -> (id) { where(id: id) }

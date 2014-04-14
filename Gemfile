@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+BBsource 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
@@ -54,11 +54,6 @@ end
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 gem 'simple_form'
-
-gem 'event-calendar', :require => 'event_calendar'
-
-#Use simple_calendar
-#gem 'simple_calendar', "~> 0.1.10"
 
 #Use fullcalendar
 gem 'fullcalendar-rails'
