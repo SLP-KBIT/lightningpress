@@ -52,6 +52,5 @@ group :development do
 end
 
 gem 'less-rails'
-# gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
-gem 'twitter-bootstrap-rails', github: 'iguto/twitter-bootstrap-rails', branch: 'change_glyphicon_helper_bootstrap3'
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 gem 'simple_form'
