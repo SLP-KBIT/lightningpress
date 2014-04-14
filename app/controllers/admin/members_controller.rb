@@ -3,7 +3,7 @@ class Admin::MembersController < ApplicationController
   before_action :get_member
 
   def index
-    @members = Member.all
+    @members = Member.order(:id).all
   end
 
   def new
