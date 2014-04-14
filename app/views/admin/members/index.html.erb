@@ -1,0 +1,30 @@
+<h1>メンバー管理</h1>
+
+<%= link_to new_admin_member_path, class: 'btn btn-success btn-sm' do %>
+  <%= glyph(:plus) %> 新規登録
+<% end %>
+
+<hr>
+
+<table class="table table-hover table-condensed table-bordered">
+  <thead>
+    <th>名前</th>
+    <th>学籍番号</th>
+    <th>アカウント名</th>
+    <th>管理者</th>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= link_to member.name, edit_admin_member_path(member.id) %></td>
+        <td><%= member.student_number %></td>
+        <td><%= member.account %></td>
+        <td>
+          <% if member.is_admin %>
+            ○
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

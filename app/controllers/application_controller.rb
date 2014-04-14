@@ -15,5 +15,9 @@ class ApplicationController < ActionController::Base
     redirect_to logins_path unless session[:member_id]
   end
 
+  def admin_filter
+    redirect_to root_path unless @current_member.is_admin
+  end
+
   helper_method :current_member
 end

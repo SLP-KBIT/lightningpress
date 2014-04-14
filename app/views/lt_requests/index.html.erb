@@ -1,5 +1,6 @@
 <h1>リクエスト一覧</h1>
 <button data-toggle="modal" href="#requestModal" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span>&nbsp;新規作成</button>
+
 <hr>
 <%= render 'form' %>
 
@@ -10,6 +11,7 @@
   <div class="col-md-4 lt_request_box">
     <h2><%= request.title %></h2>
     <p class="lt_request_content"><%= request.content %></p>
+
     <% presenter_name = case request.status
                         when Request::Status::None     then "募集中"
                         when Request::Status::Waiting  then "申請中"
@@ -18,6 +20,7 @@
        %>
 
     <p><%= presenter_name %>&nbsp;<span class="glyphicon glyphicon-arrow-left green-allow"></span>&nbsp;<%= request.contributor.name %></p>
+
     <p>投稿日時:<%= request.created_at %> </p>
 
     <div class="btn-group">
