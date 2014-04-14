@@ -12,7 +12,11 @@ LightningPress::Application.routes.draw do
   resources :logins 
   resources :lightningtalks
   resources :lt_schedule
-#  resources :calendar
+  resources :logins
+
+  namespace "admin" do
+    resources :members
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
