@@ -24,5 +24,4 @@ class LtRequestsController < ApplicationController
       :contributor_id
     )
   end
-
 end

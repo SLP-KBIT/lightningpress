@@ -6,6 +6,11 @@ LightningPress::Application.routes.draw do
   resources :lt_requests
   resources :logins
   resources :request_comments, except: :index
+
+  namespace "admin" do
+    resources :members
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
