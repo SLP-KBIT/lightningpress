@@ -1,7 +1,7 @@
 GIT
-  remote: git://github.com/iguto/twitter-bootstrap-rails.git
-  revision: 0573a26aa0022d8fd69336796ea9f44d358deb55
-  branch: change_glyphicon_helper_bootstrap3
+  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
+  revision: 69463f0ca0122f6e235c6f4b54ba9a38add3de60
+  branch: bootstrap3
   specs:
     twitter-bootstrap-rails (3.1.1)
       actionpack (>= 3.1)
@@ -55,7 +55,6 @@ GEM
     coffee-script-source (1.7.0)
     commonjs (0.2.7)
     erubis (2.7.0)
-    event-calendar (2.3.3)
     execjs (2.0.2)
     fullcalendar-rails (1.6.4.0)
     hike (1.2.3)
@@ -155,7 +154,6 @@ DEPENDENCIES
   annotate
   bcrypt-ruby (~> 3.1.2)
   coffee-rails (~> 4.0.0)
-  event-calendar
   fullcalendar-rails
   jbuilder (~> 1.2)
   jquery-rails
