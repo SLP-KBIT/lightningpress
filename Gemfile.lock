@@ -1,7 +1,7 @@
 GIT
-  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: cdc2facf19c9a08d2a72fa281b4be3ed72fbee03
-  branch: bootstrap3
+  remote: git://github.com/iguto/twitter-bootstrap-rails.git
+  revision: 0573a26aa0022d8fd69336796ea9f44d358deb55
+  branch: change_glyphicon_helper_bootstrap3
   specs:
     twitter-bootstrap-rails (3.1.1)
       actionpack (>= 3.1)
