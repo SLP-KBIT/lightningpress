@@ -1,18 +1,14 @@
 LightningPress::Application.routes.draw do
-  get '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
+  get "request_comments/index"
   get "lt_schedule/index"
-  resources :lightningtalks
-
-  resources :lt_requests
-  resources :calendar
-
   root :to => "users#top"
   resources :users
   resources :lt_requests
-  resources :logins 
+  resources :logins
+  resources :request_comments, except: :index
   resources :lightningtalks
   resources :lt_schedule
-  resources :logins
 
   namespace "admin" do
     resources :members
