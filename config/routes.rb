@@ -1,9 +1,11 @@
 LightningPress::Application.routes.draw do
+  get "request_comments/index"
   get "lt_schedule/index"
   root :to => "users#top"
   resources :users
   resources :lt_requests
   resources :logins
+  resources :request_comments, except: :index
 
   namespace "admin" do
     resources :members
