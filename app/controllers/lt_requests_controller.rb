@@ -4,8 +4,6 @@ class LtRequestsController < ApplicationController
     @requests = Request.all
     @request = Request.new
     @members = Member.all
-    @requestcomment = RequestComment.new
-    p crc: @requestcomment
   end
   
   def create

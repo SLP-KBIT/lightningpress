@@ -34,16 +34,16 @@
           <div class="divider"></div>
         <% end %>
       </div>
-      <button data-toggle="modal" href="#requestCommentModal" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span>&nbspコメントする</button>
-      <div class="modal fade" id="requestCommentModal" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
+      <button data-toggle="modal" href="#requestCommentModal<%= request.id %>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span>&nbsp;コメントする</button>
+      <div class="modal fade" id="requestCommentModal<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 class="modal-title">コメントする</h3>
+        <h3 class="modal-title">コメント</h3>
       </div>
       <%= form_for request.request_comments.build, url: { controller: :request_comments, action: :create } do |form| %>
-        <%= form.hidden_field :request_id %>
+        <%= form.hidden_field :request_id, value: request.request_comments.last.request_id %>
         <div class="modal-body">
           <div class="form-group">
             <%= form.label :title, "コメント" %>
