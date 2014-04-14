@@ -4,10 +4,14 @@ class LtRequestsController < ApplicationController
     @requests = Request.all
     @request = Request.new
     @members = Member.all
+    @requestcomment = RequestComment.new
+    p crc: @requestcomment
   end
+  
   def create
     @request = Request.new(requests_params)
     @request.presenter_id? ? @request.status = Request::Status::Waiting : @request.status = Request::Status::None
+    @request.contributor_id = @current_member.id
     @request.save
     redirect_to lt_requests_path
   end
@@ -18,11 +22,9 @@ class LtRequestsController < ApplicationController
     params.require(:request).permit(
       :title,
       :content,
-      :presenter_id, :contributor_id
+      :presenter_id,
+      :contributor_id
     )
   end
 
-  def hogehoge
-    @request = Request.all
-  end
 end
