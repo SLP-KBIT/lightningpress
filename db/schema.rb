@@ -11,9 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401161102) do
-ActiveRecord::Schema.define(version: 20140403125024) do
 ActiveRecord::Schema.define(version: 20140409133103) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "candidates", force: true do |t|
     t.integer  "request_id"
