@@ -1,0 +1,8 @@
+<ul id="comment<%= @request.id %>" class="dropdown-menu">
+<% @comments.each do |comment| %>
+  <li><%= comment.member.account %></li>
+  <li><%= comment.created_at %></li>
+  <li><%= comment.content %></li>
+  <li><div class="divider"></div></li>
+<% end %>
+</ul>
