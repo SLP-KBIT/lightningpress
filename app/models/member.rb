@@ -26,4 +26,6 @@ class Member < ActiveRecord::Base
   has_many :request_notifications
   has_many :events
   has_secure_password
+
+  scope :id_is, -> (id) { where(id: id) }
 end
