@@ -1,0 +1,63 @@
+<% unless @member %>
+  <% @member = Member.new %>
+  <% @title = '新規登録' %>
+  <% @button_caption = '登録' %>
+<% else %>
+  <% @title = '編集' %>
+  <% @button_captioon = '更新' %>
+<% end %>
+
+<h1><%= @title %></h1>
+
+<%= form_for [:admin, @member], html: { class: 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, '名前', class: 'col-md-2 control-label' %>
+    <div class="col-md-5">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :student_number, '学籍番号', class: 'col-md-2 control-label' %>
+    <div class="col-md-5">
+      <%= f.text_field :student_number, class: 'form-control', placeholder: 's00t000' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :account, 'アカウント名', class: 'col-md-2 control-label' %>
+    <div class="col-md-5">
+      <%= f.text_field :account, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, 'パスワード', class: 'col-md-2 control-label' %>
+    <div class="col-md-5">
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, 'パスワード(確認用)', class: 'col-md-2 control-label' %>
+    <div class="col-md-5">
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-5">
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :is_admin %> 管理者
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-5">
+      <%= f.submit @button_caption, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
