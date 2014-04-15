@@ -6,7 +6,8 @@ LightningPress::Application.routes.draw do
   resources :lt_requests
   resources :logins
   resources :request_comments, except: :index
-
+  resources :candidates
+  
   namespace "admin" do
     resources :members
   end
