@@ -2,11 +2,14 @@ LightningPress::Application.routes.draw do
 
   get "request_comments/index"
   get "lt_schedule/index"
+  get "candidates/:id/disable" => "candidates#disable", as: :candidates_disable
+  get "lt_requests/:id/disable" => "lt_requests#disable", as: :lt_requests_disable
   root :to => "users#top"
   resources :users
   resources :lt_requests
   resources :logins
   resources :request_comments, except: :index
+  resources :candidates
   resources :lightningtalks
   resources :lt_schedule
 
