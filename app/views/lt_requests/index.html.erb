@@ -15,19 +15,10 @@
     <p>投稿日時:<%= request.created_at %> </p>
 
     <div class="btn-group">
-      <button type="button" id="request_comment<%= request.id%>" href="#" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown" data-target="comment<%= request.id %>" >コメント一覧</button>
+      <button type="button" id="request_comment<%= request.id%>" style="display: none;" href="#" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown" data-target="comment<%= request.id %>" >コメント一覧</button>
+      <%= link_to "コメント一覧", request_comments_index_path(request_id: request.id), remote: true, class: "btn btn-danger btn-xs dropdown-toggle" %>
       <div id="request_comments"></div>
       <div id="comment<%= request.id %>" class="dropdown-menu">
-        <% if request.request_comments.empty? %>
-          <p>コメントはありません</p>
-        <% else %>
-          <% request.request_comments.each do |request_comment| %>
-            <a><%= request_comment.member.account %></a>
-            <span><%= request_comment.created_at.strftime("%F"); %></span>
-            <div><%= request_comment.content %></div>
-            <div class="divider"></div>
-          <% end %>
-        <% end %>
       </div>
       <button data-toggle="modal" href="#requestCommentModal<%= request.id %>" class="btn btn-primary btn-xs"><%= glyph(:comment) %>&nbsp;コメントする</button>
       <%= render partial: 'comment/form', locals: { comment: request.request_comments.build } %>
