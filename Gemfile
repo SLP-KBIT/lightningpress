@@ -54,3 +54,6 @@ end
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 gem 'simple_form'
+
+#Use fullcalendar
+gem 'fullcalendar-rails'

@@ -1,0 +1,2 @@
+module LightningtalksHelper
+end
