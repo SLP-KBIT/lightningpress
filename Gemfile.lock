@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/Nerian/bootstrap-datepicker-rails.git
+  revision: fb0700d197540f1a84b54f5d1e0606ddace2732a
+  specs:
+    bootstrap-datepicker-rails (1.3.0.2)
+      railties (>= 3.0)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 69463f0ca0122f6e235c6f4b54ba9a38add3de60
   branch: bootstrap3
@@ -153,6 +160,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bcrypt-ruby (~> 3.1.2)
+  bootstrap-datepicker-rails!
   coffee-rails (~> 4.0.0)
   fullcalendar-rails
   jbuilder (~> 1.2)
