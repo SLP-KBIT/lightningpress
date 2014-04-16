@@ -19,4 +19,6 @@
 *#*
 
 vendor/bundler
+vendor/ruby
 config/database.yml
+

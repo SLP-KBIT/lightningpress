@@ -41,44 +41,21 @@
     
     <div class="btn-group">
       <button type="button" id="request_comment<%= request.id%>" href="#" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown" data-target="comment<%= request.id %>" >コメント一覧</button>
-      <!-- <%= form_for :request_comment, { url: request_comment_path(request.id), method: :get ,remote: true } do |f| %> -->
-      <!--   <%= f.submit %> -->
-      <!-- <% end %> -->
       <div id="request_comments"></div>
       <div id="comment<%= request.id %>" class="dropdown-menu">
-        <% request.request_comments.each do |request_comment| %>
-          <a><%= request_comment.member.account %></a>
-          <span><%= request_comment.created_at.strftime("%F"); %></span>
-          <div><%= request_comment.content %></div>
-          <div class="divider"></div>
+        <% if request.request_comments.empty? %>
+          <p>コメントはありません</p>
+        <% else %>
+          <% request.request_comments.each do |request_comment| %>
+            <a><%= request_comment.member.account %></a>
+            <span><%= request_comment.created_at.strftime("%F"); %></span>
+            <div><%= request_comment.content %></div>
+            <div class="divider"></div>
+          <% end %>
         <% end %>
       </div>
-      <button data-toggle="modal" href="#requestCommentModal<%= request.id %>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span>&nbsp;コメントする</button>
-      <div class="modal fade" id="requestCommentModal<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 class="modal-title">コメント</h3>
-      </div>
-      <%= form_for request.request_comments.build, url: { controller: :request_comments, action: :create } do |form| %>
-        <%= form.hidden_field :request_id, value: request.request_comments.last.request_id %>
-        <div class="modal-body">
-          <div class="form-group">
-            <%= form.label :title, "コメント" %>
-            <br>
-            <%= form.text_field :content, class: "form-control" %>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <%= form.submit "投稿", class: "btn btn-primary" %>
-      <% end %>
-      <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-      </div>
-    </div>
-  </div>
-      </div>
-
+      <button data-toggle="modal" href="#requestCommentModal<%= request.id %>" class="btn btn-primary btn-xs"><%= glyph(:comment) %>&nbsp;コメントする</button>
+      <%= render partial: 'comment/form', locals: { comment: request.request_comments.build } %>
     </div>
   </div>
   <% if index % 3 == 2 %>
