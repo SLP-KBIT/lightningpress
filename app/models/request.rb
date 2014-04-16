@@ -11,9 +11,12 @@
 #  created_at     :datetime
 #  status         :integer
 #  updated_at     :datetime
+#  deleted_at     :datetime
 #
 
 class Request < ActiveRecord::Base
+  acts_as_paranoid
+  
   belongs_to :contributor, foreign_key: :contributor_id, class_name: Member
   belongs_to :presenter, foreign_key: :presenter_id, class_name: Member
   has_many :request_comments
@@ -33,4 +36,15 @@ class Request < ActiveRecord::Base
     return presenter.name if status == Status::Assigned
   end
 
+  def status_none?
+    status == Status::None
+  end
+
+  def status_waiting?
+    status == Status::Woiting
+  end
+
+  def status_assigned?
+    status == Status::Assigned
+  end
 end

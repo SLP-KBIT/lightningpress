@@ -10,7 +10,6 @@ class RequestCommentsController < ApplicationController
 
   def create
     @requestcomment = RequestComment.new(request_comments_params)
-    p crc: @requestcomment.request_id
     @requestcomment.member_id = @current_member.id
     @requestcomment.save
     redirect_to lt_requests_path

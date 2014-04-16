@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409133103) do
+ActiveRecord::Schema.define(version: 20140416153623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140409133103) do
     t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   create_table "events", force: true do |t|
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140409133103) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "sumally"
+    t.datetime "deleted_at"
   end
 
   create_table "lt_comments", force: true do |t|
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140409133103) do
     t.datetime "created_at"
     t.integer  "lightningtalk_id"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   create_table "lt_preferences", force: true do |t|
@@ -65,9 +68,9 @@ ActiveRecord::Schema.define(version: 20140409133103) do
     t.text     "account"
     t.text     "password_digest"
     t.boolean  "is_admin"
-    t.boolean  "flag"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   create_table "request_comments", force: true do |t|
@@ -76,6 +79,7 @@ ActiveRecord::Schema.define(version: 20140409133103) do
     t.datetime "created_at"
     t.integer  "request_id"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   create_table "request_notifications", force: true do |t|
@@ -102,6 +106,7 @@ ActiveRecord::Schema.define(version: 20140409133103) do
     t.datetime "created_at"
     t.integer  "status"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
 end
