@@ -1,5 +1,5 @@
 class LtScheduleController < ApplicationController
-  
+
   def index
     @lightningtalks = Lightningtalk.all
     @lightningtalk = Lightningtalk.new
@@ -18,7 +18,7 @@ class LtScheduleController < ApplicationController
       :name,
       :member_id,
       :performance_date,
-      :created_at,
+      :content_path,
       :sumally
     )
   end

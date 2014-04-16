@@ -6,7 +6,7 @@
       $('#calendar').fullCalendar({
         editable: false,
         header: {
-          left: 'prev,next today',   
+          left: 'prev,next today',
           center: 'title',
           right: 'month,basicWeek,basicDay'
         },
@@ -25,44 +25,6 @@
 
 <!-- Button trigger modal -->
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    LT作成
+  LT作成
 </button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">LT作成</h4>
-      </div>
-      
-      <%= form_for @lightningtalk, :url => { :action => "create" } do |form| %>
-        <div class="modal-body">
-          <%= form.label :name, 'タイトル' %>
-          <br>
-          <%= form.text_field :name %>
-          <br>
-          <%= form.label :performance_date, '発表日時' %>
-          <br>
-          <%= form.text_field :performance_date %>
-          <br>
-          <%= form.label :content_path, '発表資料'%>
-          <br>
-          <%= form.text_field :content_path %>
-          <br>
-          <%= form.label :sumally, '概要'%>
-          <br>
-          <%= form.text_field :sumally %>
-        </div>
-        
-        <div class="modal-footer">
-          <%= form.submit "登録", class: "btn btn-primary" %>
-          <% end %>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-</div>
+<%= render partial: 'form', locals: { lt: @lightningtalk } %>
