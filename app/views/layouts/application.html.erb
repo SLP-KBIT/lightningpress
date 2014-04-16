@@ -14,8 +14,10 @@
     <% end %>
     <%= menu_group pull: :right do %>
       <% if current_member %>
-        <%= drop_down "Admin" do %>
-          <%= menu_item "Manage Members", admin_members_path %>
+        <% if current_member.is_admin %>
+          <%= drop_down "Admin" do %>
+            <%= menu_item "Manage Members", admin_members_path %>
+          <% end %>
         <% end %>
         <%= drop_down "#{raw glyph(:user)} Account" do %>
           <%= menu_item "Account Settings", users_path %>
