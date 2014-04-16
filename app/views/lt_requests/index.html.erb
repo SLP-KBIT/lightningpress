@@ -16,9 +16,6 @@
 
     <div class="btn-group">
       <button type="button" id="request_comment<%= request.id%>" href="#" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown" data-target="comment<%= request.id %>" >コメント一覧</button>
-      <!-- <%= form_for :request_comment, { url: request_comment_path(request.id), method: :get ,remote: true } do |f| %> -->
-      <!--   <%= f.submit %> -->
-      <!-- <% end %> -->
       <div id="request_comments"></div>
       <div id="comment<%= request.id %>" class="dropdown-menu">
         <% request.request_comments.each do |request_comment| %>
