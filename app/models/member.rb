@@ -8,12 +8,13 @@
 #  account         :text
 #  password_digest :text
 #  is_admin        :boolean
-#  flag            :boolean
 #  created_at      :datetime
 #  updated_at      :datetime
+#  deleted_at      :datetime
 #
 
 class Member < ActiveRecord::Base
+  acts_as_paranoid
   has_many :lightningtalks
   has_many :lt_comments
   has_many :request_comments

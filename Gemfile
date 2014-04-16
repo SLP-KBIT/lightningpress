@@ -54,3 +54,5 @@ end
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 gem 'simple_form'
+
+gem "paranoia", "~> 2.0"
