@@ -58,7 +58,14 @@
       <button data-toggle="modal" href="#requestCommentModal<%= request.id %>" class="btn btn-primary btn-xs"><%= glyph(:comment) %>&nbsp;コメントする</button>
       <%= render partial: 'comment/form', locals: { comment: request.request_comments.build } %>
       <% if request.contributor_id == @current_member.id || @current_member.is_admin %>
-        <%= link_to("削除", lt_requests_disable_path(request.id), method: :get, class: "btn btn-danger btn-xs") %>
+        <%= content_tag :a, "削除",
+            href:"#disableRequest#{request.id}",
+            class: "btn btn-danger btn-xs",
+            data: {toggle:"modal"} %>
+        <%= modal_dialog :id => "disableRequest#{request.id}",
+            :header => { :show_close => true, :dismiss => 'modal', :title =>"#{request.title}" },
+            :body   => "このリクエストを削除しますか?",
+            :footer => link_to("はい", lt_requests_disable_path(request.id), method: :get, class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal" ) %>
       <% end %>
     </div>
   </div>
