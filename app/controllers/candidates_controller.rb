@@ -12,4 +12,10 @@ class CandidatesController < ApplicationController
       :member_id      
     )
   end
+
+  def disable
+    @candidate = Candidate.find(params[:id])
+    @candidate.destroy
+    redirect_to lt_requests_path
+  end
 end
