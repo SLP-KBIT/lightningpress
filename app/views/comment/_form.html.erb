@@ -1,32 +1,21 @@
-<div class="modal fade" id="requestCommentModal" tabindex="-1" role="dialog" aria-labelledby="requstCommentModalLabel" aria-hidden="true">
+<div class="modal fade" id="requestCommentModal<%= comment.request_id %>" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 class="modal-title">コメント新規作成</h3>
+        <h3 class="modal-title">コメント</h3>
       </div>
-      <%= simple_form_for @request, url: { action: "create" } do |form| %>
+      <%= form_for comment, url: { controller: :request_comments, action: :create } do |form| %>
+        <%= form.hidden_field :request_id %>
         <div class="modal-body">
           <div class="form-group">
-            <%= form.label :title, "タイトル" %>
+            <%= form.label :title, "コメント" %>
             <br>
-            <%= form.text_field :title, class: "form-control" %>
+            <%= form.text_field :content, class: "form-control" %>
           </div>
-          <div class="for-group">
-            <%= form.label :content, "内容" %>
-            <br>
-            <%= form.text_area :content, rows: 10, cols: 40, class: "form-control" %>
-          </div>
-          <h4>
-            <div class="dropdown form-group">
-              <%= form.label :presenter_id, "担当者" %>
-              <br>
-              <%= form.collection_select :presenter_id, @members, :id, :account, class: "form-control", prompt:"unknown" %>
-            </div>
-          </h4>
         </div>
         <div class="modal-footer">
-          <%= form.submit "登録", class: "btn btn-primary" %>
+          <%= form.submit "投稿", class: "btn btn-primary" %>
       <% end %>
       <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
       </div>
