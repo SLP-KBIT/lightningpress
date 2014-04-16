@@ -14,6 +14,12 @@ class LtRequestsController < ApplicationController
     redirect_to lt_requests_path
   end
 
+  def disable
+    @request = Request.find(params[:id])
+    @request.destroy
+    redirect_to lt_requests_path
+  end
+
   private
 
   def requests_params

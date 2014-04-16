@@ -57,6 +57,9 @@
       </div>
       <button data-toggle="modal" href="#requestCommentModal<%= request.id %>" class="btn btn-primary btn-xs"><%= glyph(:comment) %>&nbsp;コメントする</button>
       <%= render partial: 'comment/form', locals: { comment: request.request_comments.build } %>
+      <% if request.contributor_id == @current_member.id || @current_member.is_admin %>
+        <%= link_to("削除", lt_requests_disable_path(request.id), method: :get, class: "btn btn-danger btn-xs") %>
+      <% end %>
     </div>
   </div>
   <% if index % 3 == 2 %>
