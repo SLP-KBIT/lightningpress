@@ -1,0 +1,10 @@
+  <% if request.request_comments.empty? %>
+    <p>コメントはありません</p>
+  <% else %>
+    <% request.request_comments.each do |request_comment| %>
+      <a><%= request_comment.member.account %></a>
+      <span><%= request_comment.created_at.strftime("%F"); %></span>
+      <div><%= request_comment.content %></div>
+      <div class="divider"></div>
+    <% end %>
+  <% end %>
