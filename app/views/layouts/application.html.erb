@@ -7,11 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <%= nav_bar static: :top, brand: "LightningPress", responsive: true do %>
     <%= menu_group do %>
       <%= menu_item "LT Request", lt_requests_path %>
-      <%= menu_item "LT Schedule", "#" %>
+      <%= menu_item "LT Schedule", lt_schedule_index_path %>
     <% end %>
     <%= menu_group pull: :right do %>
       <% if current_member %>

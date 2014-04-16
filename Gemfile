@@ -56,3 +56,6 @@ gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branc
 gem 'simple_form'
 
 gem "paranoia", "~> 2.0"
+
+#Use fullcalendar
+gem 'fullcalendar-rails'

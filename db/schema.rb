@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20140416153623) do
     t.datetime "deleted_at"
   end
 
+  create_table "events", force: true do |t|
+    t.text     "name"
+    t.integer  "member_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.text     "content_path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "lightningtalks", force: true do |t|
     t.text     "name"
     t.text     "member_id"
