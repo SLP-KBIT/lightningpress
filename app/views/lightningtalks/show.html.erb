@@ -1,0 +1,15 @@
+<h1>Lightningtalkpage</h1>
+<table border = 1>
+ <tr>
+   <th>タイトル</th>
+   <th>プレゼンター</th>
+   <th>日付</th>
+   <th>資料URL</th>
+ </tr>
+ <tr>
+    <th><%= @lightningtalk.name %></th>
+    <th><%= @lightningtalk.member_id %></th>
+    <th><%= @lightningtalk.performance_date.strftime("%m %d") %></th>
+    <th><%= @lightningtalk.content_path %></th>
+  </tr>
+</table>
