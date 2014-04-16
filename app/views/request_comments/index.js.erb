@@ -1,0 +1,2 @@
+$('#comment<%= @request.id %>').html("<%= escape_javascript(render partial: 'list', locals: { request: @request }) %>")
+$('#request_comment<%= @request.id %>').click()

@@ -1,6 +1,8 @@
 class RequestCommentsController < ApplicationController
   before_action :get_request
-  
+  def index
+    @request = Request.where(id: params[:request_id]).first
+  end
   def show
     @comments = @request.request_comments
     render :show_comments
