@@ -9,9 +9,12 @@
 #  content_path     :text
 #  created_at       :datetime
 #  updated_at       :datetime
+#  sumally          :text
+#  deleted_at       :datetime
 #
 
 class Lightningtalk < ActiveRecord::Base
+  acts_as_paranoid
   belongs_to :member, foreign_key: :member_id, class_name: Member
   has_many :lt_comments
   has_many :lt_preferences

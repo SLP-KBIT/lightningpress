@@ -24,7 +24,7 @@
             :body   => "このLTに立候補しますか?",
             :footer => content_tag(form.submit 'はい', :class => 'btn btn-primary') %>
       <% end %>
-    <% elsif request.status == Request::Status::None  %>
+    <% elsif request.status == Request::Status::None && request.candidates.last.status == Candidate::Status::Waiting  %>
       <%= content_tag :a, "立候補中",
           href:"#withdrowCandidate#{request.id}",
           class: "btn btn-warning",
