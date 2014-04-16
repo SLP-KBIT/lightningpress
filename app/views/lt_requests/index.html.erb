@@ -18,11 +18,15 @@
       <button type="button" id="request_comment<%= request.id%>" href="#" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown" data-target="comment<%= request.id %>" >コメント一覧</button>
       <div id="request_comments"></div>
       <div id="comment<%= request.id %>" class="dropdown-menu">
-        <% request.request_comments.each do |request_comment| %>
-          <a><%= request_comment.member.account %></a>
-          <span><%= request_comment.created_at.strftime("%F"); %></span>
-          <div><%= request_comment.content %></div>
-          <div class="divider"></div>
+        <% if request.request_comments.empty? %>
+          <p>コメントはありません</p>
+        <% else %>
+          <% request.request_comments.each do |request_comment| %>
+            <a><%= request_comment.member.account %></a>
+            <span><%= request_comment.created_at.strftime("%F"); %></span>
+            <div><%= request_comment.content %></div>
+            <div class="divider"></div>
+          <% end %>
         <% end %>
       </div>
       <button data-toggle="modal" href="#requestCommentModal<%= request.id %>" class="btn btn-primary btn-xs"><%= glyph(:comment) %>&nbsp;コメントする</button>
