@@ -1,10 +1,10 @@
 <% if request.request_comments.empty? %>
   <p>コメントはありません</p>
 <% else %>
-  <% request.request_comments.each do |request_comment| %>
+  <% request.request_comments.order("created_at DESC").each do |request_comment| %>
     <div class="panel panel-default" style="margin: 5px; width: 250px;">
       <div class="panel-heading">
-        <font color="gray"><%= request_comment.created_at.to_s(:date) %></font> by <strong><%= request_comment.member.account %></strong>
+        <font color="gray"><%= request_comment.created_at.strftime("%Y/%m/%d %H:%M") %></font> by <strong><%= request_comment.member.account %></strong>
       </div>
       <div class="panel-body">
         <%= request_comment.content %>
