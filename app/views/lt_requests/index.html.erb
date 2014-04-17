@@ -39,10 +39,10 @@
       <p><%= request.status_name %>&nbsp;<span class="glyphicon glyphicon-arrow-left green-allow"></span>&nbsp;<%= request.contributor.name %></p>
     <% end %>
     <p>投稿日時:<%= request.created_at %> </p>
-    
+
     <div class="btn-group">
       <button type="button" id="request_comment<%= request.id%>" style="display: none;" href="#" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown" data-target="comment<%= request.id %>" >コメント一覧</button>
-      <%= link_to "コメント一覧", request_comments_index_path(request_id: request.id), remote: true, class: "btn btn-danger btn-xs dropdown-toggle" %>
+      <%= link_to raw("コメント一覧&nbsp;" + content_tag(:span, request.request_comments.size, class: "badge")), request_comments_index_path(request_id: request.id), remote: true, class: "btn btn-danger btn-xs dropdown-toggle" %>
       <div id="request_comments"></div>
       <div id="comment<%= request.id %>" class="dropdown-menu">
       </div>
