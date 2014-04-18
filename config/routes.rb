@@ -15,6 +15,7 @@ LightningPress::Application.routes.draw do
 
   namespace "admin" do
     resources :members
+    resources :lt_requests
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

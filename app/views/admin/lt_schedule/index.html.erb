@@ -1,0 +1,36 @@
+<h1>lt_schedule</h1>
+
+<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+  <%= glyph(:plus) %>&nbsp;LT作成
+</button>
+
+<hr/>
+
+<div id="calendar" >
+  <script>
+    $(document).ready(function() {
+      $('#calendar').fullCalendar({
+        editable: false,
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,basicWeek,basicDay'
+        },
+        defaultView: 'month',
+    <%
+      lts = @lightningtalks.map do |lt|
+        { title: lt.name, start: lt.performance_date, url: lightningtalks_path(lt).gsub(".", "/") }
+      end.to_json
+    %>
+        events: <%= raw lts %>
+      })
+    });
+  </script>
+</div>
+
+<%= render partial: 'form', locals: { lt: @lightningtalk } %>
+
+
+<script>
+  $('input[type=datetime]').datepicker({format: "yyyy/mm/dd"})
+</script>
