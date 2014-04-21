@@ -1,0 +1,25 @@
+<h3>立候補状況</h3>
+
+<ul class="panel-group" id="accordion">
+  <% @recruiting_requests.each do |request|  %>
+  <li class="list-group-item"><span class="badge"><%= @candidates[request.id].size %></span>
+    <div class="panel-heading">
+      <span class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= request.id %>">
+          <%= request.title %>
+        </a>
+      </span>
+    </div>
+    <div id="collapse<%= request.id %>" class="panel-collapse collapse">
+      <div class="panel-body">
+         <ul class="list-group">
+           <% @candidates[request.id].each do |candidate| %>
+             <li class="list-group-item"><%= candidate.member.name %></li>
+           <% end %>
+         </ul>
+      </div>
+    </div>
+  </li>
+  <% end %>
+</ul>
+
