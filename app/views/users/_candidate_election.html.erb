@@ -1,0 +1,36 @@
+<h3>立候補状況</h3>
+
+<ul class="panel-group clear" id="accordion">
+  <% @recruiting_requests.each do |request|  %>
+  <li class="list-group-item"><span class="badge"><%= @candidates[request.id].size %></span>
+    <div class="panel-heading">
+      <span class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= request.id %>">
+          <%= request.title %>
+        </a>
+      </span>
+    </div>
+    <div id="collapse<%= request.id %>" class="panel-collapse collapse">
+      <div class="panel-body">
+         <ul>
+           <% @candidates[request.id].each do |candidate| %>
+             <li>
+      <%= form_for request, method: :put, url: { controller: :candidates, action: :choose, :id =>"#{candidate.id}" } do |form| %>
+        <%= content_tag :a, "#{candidate.member.name}",
+            href:"#candidate#{request.id}-#{candidate.id}",
+            class: "",
+            data: {toggle:"modal"} %>
+        <%= modal_dialog :id => "candidate#{request.id}-#{candidate.id}",
+            :header => { :show_close => true, :dismiss => 'modal', :title =>"担当を依頼" },
+            :body   => "#{request.title}を#{candidate.member.name}さんに担当を依頼しますか",
+            :footer => form.submit("はい", class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal") %>
+      <% end %>
+                </span>
+              </li>
+           <% end %>
+         </ul>
+      </div>
+    </div>
+  </li>
+  <% end %>
+</ul>
