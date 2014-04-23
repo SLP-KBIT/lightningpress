@@ -29,9 +29,6 @@ a.accordion-toggle {
   border-bottom-right-radius: 0;
   border-bottom: 0;
 }
-li ul {
-  margin-bottom: 0px;
-}
 .list-group-item > .panel-heading {
   padding-top: 0px;
   padding-bottom: 0px;
@@ -49,11 +46,13 @@ li ul {
 
 }
 .panel-group > .list-group-item div {
-  padding-left: 0px;
   a {
     padding-left: 0px;
   }
 }
 ul.panel-group {
   padding-left: 10px;
+}
+.clear .list-group-item {
+  border: 1px solid #BBBBBB;
 }
