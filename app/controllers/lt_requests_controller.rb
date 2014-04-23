@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class LtRequestsController < ApplicationController
   def index
-    @requests = Request.all
+    @requests = Request.order(:id).all
     @request = Request.new
     @members = Member.all
   end
@@ -17,6 +17,12 @@ class LtRequestsController < ApplicationController
   def disable
     @request = Request.find(params[:id])
     @request.destroy
+    redirect_to lt_requests_path
+  end
+
+  def update
+    @request = Request.where(id: params[:id]).first
+    @request.update_attributes( requests_params )
     redirect_to lt_requests_path
   end
 

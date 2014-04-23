@@ -1,11 +1,11 @@
-<div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
+<div class="modal fade" id="editRequestModal<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="editRequestModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 class="modal-title">リクエスト新規作成</h3>
+        <h3 class="modal-title">リクエスト編集</h3>
       </div>
-      <%= simple_form_for @request, url: { action: "create" } do |form| %>
+      <%= form_for request, url: { action: "update", id: request.id } do |form| %>
         <div class="modal-body">
           <div class="form-group">
             <%= form.label :title, "タイトル" %>
@@ -21,12 +21,12 @@
             <div class="dropdown form-group">
               <%= form.label :presenter_id, "担当者" %>
               <br>
-              <%= form.collection_select :presenter_id, @members, :id, :account, {prompt:"募集する"} , { class: "form-control" } %>
+              <%= form.collection_select( :presenter_id, @members, :id, :account, { disabled: true, prompt:"募集する" }, { class: "form-control" } ) %>
             </div>
           </h4>
         </div>
         <div class="modal-footer">
-          <%= form.submit "登録", class: "btn btn-primary" %>
+          <%= form.submit "更新", class: "btn btn-primary" %>
       <% end %>
       <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
       </div>
