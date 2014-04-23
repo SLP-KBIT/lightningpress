@@ -67,3 +67,21 @@
 <% end %>
 
 <% end %>
+
+<script>
+  $(function(){
+    $("a:contains('募集中')").mouseover(function(){
+      $(this).text("立候補する");
+    }).mouseout(function(){
+      $(this).text("募集中");
+    });
+  });
+    $(function(){
+    $("a:contains('立候補中')").mouseover(function(){
+      $(this).text("立候補のキャンセル");
+    }).mouseout(function(){
+      $(this).text("立候補中");
+    });
+  });
+
+</script>
