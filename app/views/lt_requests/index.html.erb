@@ -57,6 +57,8 @@
             :header => { :show_close => true, :dismiss => 'modal', :title =>"#{request.title}" },
             :body   => "このリクエストを削除しますか?",
             :footer => link_to("はい", lt_requests_disable_path(request.id), method: :get, class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal" ) %>
+        <button data-toggle="modal" href="#editRequestModal<%= request.id %>" class="btn btn-primary btn-xs" >編集</button>
+        <%= render 'edit_form', request: request %>
       <% end %>
     </div>
   </div>
