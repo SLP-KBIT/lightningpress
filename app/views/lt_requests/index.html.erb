@@ -1,8 +1,11 @@
 <h1>リクエスト一覧</h1>
-<button data-toggle="modal" href="#requestModal" class="btn btn-primary btn-sm"><%= glyph(:plus) %>&nbsp;新規作成</button>
 
+<%= content_tag :button, glyph(:plus) + " 新規作成",
+    href: "#requestModal",
+    class: "btn btn-primary btn-sm",
+    data: {toggle: "modal"} %>
+<%= render 'form', req: @request %>
 <hr>
-<%= render 'form' %>
 
 <% @requests.each_with_index do |request, index|  %>
   <% if index % 3 == 0 %>
@@ -57,7 +60,10 @@
             :header => { :show_close => true, :dismiss => 'modal', :title =>"#{request.title}" },
             :body   => "このリクエストを削除しますか?",
             :footer => link_to("はい", lt_requests_disable_path(request.id), method: :get, class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal" ) %>
-        <button data-toggle="modal" href="#editRequestModal<%= request.id %>" class="btn btn-primary btn-xs" >編集</button>
+        <%= content_tag :button, "編集",
+            href:"#editRequestModal#{request.id}",
+            class: "btn btn-primary btn-xs",
+            data: {toggle:"modal"} %>
         <%= render 'edit_form', request: request %>
       <% end %>
     </div>
