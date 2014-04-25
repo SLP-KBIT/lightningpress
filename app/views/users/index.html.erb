@@ -1,1 +1,37 @@
-<h1>ユーザページ</h1>
+<h2>ユーザプロフィール</h2>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-4">
+    <table class="table table-hover table-condensed table-bordered">
+      <tr>
+        <th>名前</th>
+        <td><%= @current_member.name %></td>
+      </tr>
+      <tr>
+        <th>学籍番号</th>
+        <td><%= @current_member.student_number %></td>
+      </tr>
+      <tr>
+        <th>アカウント名</th>
+        <td><%= @current_member.account %></td>
+      </tr>
+      <tr>
+        <th>権限</th>
+        <% if @current_member.is_admin? %>
+          <td>管理者ユーザ</td>
+        <% else %>
+          <td>一般ユーザ</td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<%= content_tag :button, "編集",
+                href: "#editCurrentMember",
+                class: "btn btn-primary btn-sm",
+                data: {toggle: "modal"}%>
+<%= render 'edit_form', member: @current_member %>
+

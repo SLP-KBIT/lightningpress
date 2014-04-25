@@ -19,7 +19,7 @@
             <%= menu_item "Manage Members", admin_members_path %>
           <% end %>
         <% end %>
-        <%= drop_down "#{raw glyph(:user)} Account" do %>
+        <%= drop_down "#{raw glyph(:user)} #{@current_member.account}" do %>
           <%= menu_item "Account Settings", users_path %>
           <%= menu_divider %>
           <%= menu_item raw(glyph('log-out')) + " Log out", logins_path + "/#{@current_member.id}", method: :delete %>
