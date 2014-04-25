@@ -15,10 +15,8 @@ class LtRequestsController < ApplicationController
   end
 
   def update
-    @request = Request.where(id: params[:id])
-    @request.attributes = params.require(:requests).permit(:id, :contributor_id, :title,
-            :content, :presenter_id, :status)
-    @request.save
+    @request = Request.where(id: params[:id]).first
+    @request.update_attributes(request_params)
     redirect_to lt_requests_path
   end
 
@@ -49,7 +47,8 @@ class LtRequestsController < ApplicationController
       :title,
       :content,
       :presenter_id,
-      :contributor_id
+      :contributor_id,
+      :status
     )
   end
 
