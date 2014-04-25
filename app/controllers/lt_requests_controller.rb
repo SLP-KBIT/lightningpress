@@ -17,7 +17,6 @@ class LtRequestsController < ApplicationController
   def update
     @request = Request.where(id: params[:id]).first
     @request.update_attributes(request_params)
-    @request.save
     redirect_to lt_requests_path
   end
 

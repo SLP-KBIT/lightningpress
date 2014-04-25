@@ -1,9 +1,9 @@
 <h1>リクエスト一覧</h1>
 
 <%= content_tag :button, glyph(:plus) + " 新規作成",
-                href: "#requestModal",
-                class: "btn btn-primary btn-sm",
-                data: {toggle: "modal"} %>
+    href: "#requestModal",
+    class: "btn btn-primary btn-sm",
+    data: {toggle: "modal"} %>
 <%= render 'form', req: @request %>
 <hr>
 
@@ -53,17 +53,17 @@
       <%= render partial: 'comment/form', locals: { comment: request.request_comments.build } %>
       <% if request.contributor_id == @current_member.id || @current_member.is_admin %>
         <%= content_tag :a, "削除",
-                        href:"#disableRequest#{request.id}",
-                        class: "btn btn-danger btn-xs",
-                        data: {toggle:"modal"} %>
+            href:"#disableRequest#{request.id}",
+            class: "btn btn-danger btn-xs",
+            data: {toggle:"modal"} %>
         <%= modal_dialog :id     => "disableRequest#{request.id}",
-                         :header => { :show_close => true, :dismiss => 'modal', :title =>"#{request.title}" },
-                         :body   => "このリクエストを削除しますか?",
-                         :footer => link_to("はい", lt_requests_disable_path(request.id), method: :get, class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal" ) %>
+            :header => { :show_close => true, :dismiss => 'modal', :title =>"#{request.title}" },
+            :body   => "このリクエストを削除しますか?",
+            :footer => link_to("はい", lt_requests_disable_path(request.id), method: :get, class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal" ) %>
         <%= content_tag :button, "編集",
-                        href:"#editRequestModal#{request.id}",
-                        class: "btn btn-primary btn-xs",
-                        data: {toggle:"modal"} %>
+            href:"#editRequestModal#{request.id}",
+            class: "btn btn-primary btn-xs",
+            data: {toggle:"modal"} %>
         <%= render 'edit_form', request: request %>
       <% end %>
     </div>
