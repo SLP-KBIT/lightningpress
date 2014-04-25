@@ -20,7 +20,7 @@
   <% end %>
 
   <%= modal_dialog :id => "editRequestModal#{request.id}",
-      :header => { :show_close => true, :dismiss => 'modal', :title =>"リクエスト編集" },
-      :body   => modal_body,
-      :footer => form.submit("更新", class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal")  %>
+                   :header => { :show_close => true, :dismiss => 'modal', :title =>"リクエスト編集" },
+                   :body   => modal_body,
+                   :footer => form.submit("更新", class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal")  %>
 <% end %>
