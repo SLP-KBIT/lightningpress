@@ -1,35 +1,30 @@
 <%= form_for member, url: {action: :update, id: member.id} do |form|%>
   <% modal_body = capture do %>
+    <%= form.hidden_field :id, value: member.id %>
     <div class="form-group">
-      <%= form.hidden_field :id, value: member.id %>
       <%= form.label :name, "名前" %>
-      <br>
       <%= form.text_field :name, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= form.label :student_number, "学籍番号" %>
-      <br>
-      <%= form.text_field :student_number, class: "form-control placeholder: 's00t000'" %>
+      <%= form.text_field :student_number, class: "form-control", placeholder: "s00t000" %>
     </div>
     <div class="form-group">
       <%= form.label :account, "アカウント名" %>
-      <br>
       <%= form.text_field :account, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= form.label :password, "パスワード" %>
-      <br>
       <%= form.password_field :password, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= form.label :password_confirmation, "パスワード(確認用)" %>
-      <br>
       <%= form.password_field :password_confirmation, class: "form-control" %>
     </div>
   <% end %>
 
-<%= modal_dialog id:     "editCurrentMember",
-                 header: { show_close: true, dismiss: 'modal', title: "ユーザの編集", },
-                 body:    modal_body,
-                 footer:  form.submit("更新", class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal")%>
+  <%= modal_dialog id:     "editCurrentMember",
+      header: { show_close: true, dismiss: 'modal', title: "ユーザの編集", },
+      body:    modal_body,
+      footer:  form.submit("更新", class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal")%>
 <% end %>

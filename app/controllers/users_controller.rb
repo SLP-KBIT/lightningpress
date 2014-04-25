@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   def update
     @member = Member.where(id: params[:id]).first
     @member.update_attributes(member_params)
-    @member.save
     redirect_to users_path
   end
 
