@@ -56,7 +56,7 @@
             href:"#disableRequest#{request.id}",
             class: "btn btn-danger btn-xs",
             data: {toggle:"modal"} %>
-        <%= modal_dialog :id     => "disableRequest#{request.id}",
+        <%= modal_dialog :id => "disableRequest#{request.id}",
             :header => { :show_close => true, :dismiss => 'modal', :title =>"#{request.title}" },
             :body   => "このリクエストを削除しますか?",
             :footer => link_to("はい", lt_requests_disable_path(request.id), method: :get, class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal" ) %>
