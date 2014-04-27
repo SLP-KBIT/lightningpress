@@ -11,10 +11,10 @@
   <tbody>
   <% @planning_lightningtalks.each do |schedule| %>
     <tr>
-      <td><%= schedule.performance_date.strftime("%F") %></td>
       <td><%= link_to "#{schedule.name}", schedule %>
       <td><%= schedule.member.account %></td>
-    </tr>
+      <td><%= schedule.performance_date.strftime("%F") %></td>
+</tr>
   <% end %>
   </tbody>
 </table>
@@ -32,9 +32,9 @@
   <tbody>
   <% @finished_lightningtalks.each do |schedule| %>
     <tr>
-      <td><%= schedule.performance_date.strftime("%F") %></td>
       <td><%= link_to "#{schedule.name}", schedule %>
       <td><%= schedule.member.account %></td>
+      <td><%= schedule.performance_date.strftime("%F") %></td>
     </tr>
   <% end %>
   </tbody>
@@ -53,9 +53,9 @@
   <tbody>
   <% @your_lightningtalks.each do |schedule| %>
     <tr>
-      <td><%= schedule.performance_date.strftime("%F") %></td>
       <td><%= link_to "#{schedule.name}", schedule %>
       <td><%= schedule.member.account %></td>
+      <td><%= schedule.performance_date.strftime("%F") %></td>
     </tr>
   <% end %>
   </tbody>
