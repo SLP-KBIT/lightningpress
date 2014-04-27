@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     candidate_election
     planning_lightningtalks
     finished_lightningtalks
+    your_lightningtalks
   end
 
   def update
@@ -31,6 +32,10 @@ class UsersController < ApplicationController
 
   def finished_lightningtalks
     @finished_lightningtalks = Lightningtalk.order("performance_date DESC").where("performance_date < ?", Date.today).first(2)
+  end
+
+  def your_lightningtalks
+    @your_lightningtalks = Lightningtalk.order("performance_date").where(member_id: @current_member.id).where("performance_date >= ?", Date.today).first(3)
   end
 
   def member_params
