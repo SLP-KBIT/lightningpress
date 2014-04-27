@@ -1,0 +1,20 @@
+<h3>直近のLTスケジュール</h3>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr href="top">
+      <th>日付</th>
+      <th>タイトル</th>
+      <th>担当者</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @recent_schedules.each do |schedule| %>
+    <tr>
+      <td><%= schedule.performance_date.strftime("%F") %></td>
+      <td><%= link_to "#{schedule.name}", schedule %>
+      <td><%= schedule.member.account %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

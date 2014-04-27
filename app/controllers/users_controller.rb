@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def top
     candidate_election
+    recent_schedule
   end
 
   def update
@@ -21,6 +22,10 @@ class UsersController < ApplicationController
     @recruiting_requests.each_with_index do |request,i|
       @candidates.store(request.id ,Candidate.where(request_id: request.id))
     end
+  end
+
+  def recent_schedule
+    @recent_schedules = Lightningtalk.order(:performance_date).where("performance_date >= ?", Date.today).first(5)
   end
 
   def member_params
