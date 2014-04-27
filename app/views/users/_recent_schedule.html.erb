@@ -1,0 +1,62 @@
+<h3>直近のLT予定</h3>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr href="top">
+      <th>日付</th>
+      <th>タイトル</th>
+      <th>担当者</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @planning_lightningtalks.each do |schedule| %>
+    <tr>
+      <td><%= link_to "#{schedule.name}", schedule %>
+      <td><%= schedule.member.account %></td>
+      <td><%= schedule.performance_date.strftime("%F") %></td>
+</tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h3>最近行われたLT</h3>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr href="top">
+      <th>日付</th>
+      <th>タイトル</th>
+      <th>担当者</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @finished_lightningtalks.each do |schedule| %>
+    <tr>
+      <td><%= link_to "#{schedule.name}", schedule %>
+      <td><%= schedule.member.account %></td>
+      <td><%= schedule.performance_date.strftime("%F") %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h3>あなたの直近のLT予定</h3>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr href="top">
+      <th>日付</th>
+      <th>タイトル</th>
+      <th>担当者</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @your_lightningtalks.each do |schedule| %>
+    <tr>
+      <td><%= link_to "#{schedule.name}", schedule %>
+      <td><%= schedule.member.account %></td>
+      <td><%= schedule.performance_date.strftime("%F") %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
