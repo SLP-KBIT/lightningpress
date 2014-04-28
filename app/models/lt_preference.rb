@@ -11,4 +11,8 @@
 #
 
 class LtPreference < ActiveRecord::Base
+  validates :lightningtalk_id, presence: true, uniqueness: {scope: [:member_id]}
+  validates :grade, :member_id, presence: true
+  validates :grade, presence: true, inclusion: {in: 1..5}
+  validates_associated :lightningtalk, :member
 end
