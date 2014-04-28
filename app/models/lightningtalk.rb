@@ -20,11 +20,4 @@ class Lightningtalk < ActiveRecord::Base
   has_many :lt_preferences
   validates :name, :member_id, :performance_date, :sumally, presence: true
   validates_associated :member
-  validate :expiration_date_cannot_be_in_the_past
-
-  def expiration_date_cannot_be_in_the_past
-    errors.add(:performance_date, "can't be in the past") if
-      !performance_date.blank? and performance_date < Date.today
-  end
-
 end
