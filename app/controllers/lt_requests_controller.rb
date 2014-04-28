@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class LtRequestsController < ApplicationController
   def index
-    @requests = Request.all
+    @requests = Request.order(:id).all
     @request = Request.new
     @members = Member.all
   end
@@ -15,10 +15,8 @@ class LtRequestsController < ApplicationController
   end
 
   def update
-    @request = Request.where(id: params[:id])
-    @request.attributes = params.require(:requests).permit(:id, :contributor_id, :title,
-            :content, :presenter_id, :status)
-    @request.save
+    @request = Request.where(id: params[:id]).first
+    @request.update_attributes(request_params)
     redirect_to lt_requests_path
   end
 
@@ -36,6 +34,12 @@ class LtRequestsController < ApplicationController
     redirect_to lt_requests_path
   end
 
+  def update
+    @request = Request.where(id: params[:id]).first
+    @request.update_attributes( requests_params )
+    redirect_to lt_requests_path
+  end
+
   private
 
   def requests_params
@@ -43,7 +47,8 @@ class LtRequestsController < ApplicationController
       :title,
       :content,
       :presenter_id,
-      :contributor_id
+      :contributor_id,
+      :status
     )
   end
 
