@@ -1,6 +1,12 @@
 <h1>トップページ</h1>
+<hr>
 
 <!-- トップページの各要素の配置などは後で検討 -->
-<div style="width: 300px; height: 100px;">
-  <%= render 'candidate_election' %>
+<div class="row">
+  <div class="col-md-4">
+    <%= render 'recent_schedule' %>
+  </div>
+  <div style="width: 300px; height: 100px;", class="col-md-4">
+    <%= render 'candidate_election' %>
+  </div>
 </div>
