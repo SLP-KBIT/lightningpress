@@ -13,7 +13,10 @@
 
 class RequestComment < ActiveRecord::Base
   acts_as_paranoid
-  
+
   belongs_to :member
   belongs_to :request
+
+  validates :member_id, :content, :request_id, presence: true
+  validates_associated :member, :request
 end
