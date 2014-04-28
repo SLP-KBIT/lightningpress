@@ -10,7 +10,7 @@
 ookawa = Member.create(name: '大川 昌寛', student_number: 's09t214', account: 'ookawa', password: 'password', password_confirmation: 'password', is_admin: true)
 
 engineer = Member.create(name:"Engineer", student_number:"s00t200", account:"engineer", password:"slp", password_confirmation:"slp", is_admin:true)
-anyone = Member.create(name:"Anyone1", student_number:"s00t000", account:"anyone", password:"lt", password_confirmation:"lt", is_admin:false)
+anyone = Member.create(name:"Anyone", student_number:"s00t000", account:"anyone", password:"lt", password_confirmation:"lt", is_admin:false)
 
 slp =  Lightningtalk.create(name:"SLP", member_id:anyone.id, sumally:"SLPの活動について", performance_date: Date.new.tomorrow, content_path:"hogehoge" )
 
