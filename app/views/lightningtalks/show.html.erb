@@ -1,15 +1,31 @@
-<h1>Lightningtalkpage</h1>
-<table border = 1>
- <tr>
-   <th>タイトル</th>
-   <th>プレゼンター</th>
-   <th>日付</th>
-   <th>資料URL</th>
- </tr>
- <tr>
-    <th><%= @lightningtalk.name %></th>
-    <th><%= @lightningtalk.member_id %></th>
-    <th><%= @lightningtalk.performance_date.strftime("%m %d") %></th>
-    <th><%= @lightningtalk.content_path %></th>
-  </tr>
-</table>
+<h1>LT 詳細</h1>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-4">
+    <table class="table table-hover table-condensed table-bordered">
+      <tr>
+        <th>タイトル</th>
+        <td><%= @lightningtalk.name %></td>
+      </tr>
+      <tr>
+        <th>プレゼンター</th>
+        <td><%= @lightningtalk.member.account %></td>
+      </tr>
+      <tr>
+        <th>日付</th>
+        <td><%= @lightningtalk.performance_date.to_s(:date) %></td>
+      </tr>
+      <tr>
+        <th>資料</th>
+        <td><%= @lightningtalk.content_path.blank? ? "資料はまだない" : link_to("ダウンロード", :action => :archive) %></td>
+      </tr>
+    </table>
+    <%= content_tag :button, "編集",
+	            href: "#editLightningtalkModal#{@lightningtalk.id}",
+                    class: "btn btn-primary btn-sm",
+                    data: {toggle: "modal"} %>
+    <%= render 'edit_form', lightningtalk: @lightningtalk %>
+  <div>
+<div>
