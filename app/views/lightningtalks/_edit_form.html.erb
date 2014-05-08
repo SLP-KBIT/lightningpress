@@ -1,0 +1,34 @@
+<%= form_for lightningtalk, url: { action: :update, id: lightningtalk.id } do |form| %>
+  <% modal_body = capture do %>
+    <div class="modal-body">
+      <div class="form-group">
+        <%= form.label :name, 'タイトル' %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :performance_date, '発表日時' %>
+        <%= form.datetime_field :performance_date, class: "form-control", value: lightningtalk.performance_date.strftime("%F") %>
+      </div>
+      <div class="form-group">
+        <%= form.label :sumally, '概要'%>
+        <%= form.text_area :sumally, class: "form-control" %>
+      </div>
+      <h4>
+        <div class="dropdown form-group">
+          <%= form.label :member_id, "担当者" %>
+          <%= form.collection_select( :member_id, @members, :id, :account,{}, { class: "form-control" } )  %>
+        </div>
+      </h4>
+      <div class="form-group">
+        <%= form.label :file, '発表資料'%>
+        <%= form.file_field :file, class: "btn brn-primary" %>
+      </div>
+    </div>
+  <% end %>
+
+
+  <%= modal_dialog :id => "editLightningtalkModal#{lightningtalk.id}",
+      :header => { :show_close => true, :dismiss => 'modal', :title =>"LT編集" },
+      :body   => modal_body,
+      :footer => form.submit("更新", class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal")  %>
+<% end %>

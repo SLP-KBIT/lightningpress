@@ -18,4 +18,11 @@ class Lightningtalk < ActiveRecord::Base
   belongs_to :member, foreign_key: :member_id, class_name: Member
   has_many :lt_comments
   has_many :lt_preferences
+
+  def file_save(file)
+    self.content_path = 'public/pdf/' + file.original_filename
+    File.open(self.content_path, "wb") do |f|
+      f.write file.read
+    end
+  end
 end
