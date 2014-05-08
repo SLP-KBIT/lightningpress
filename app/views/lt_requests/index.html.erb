@@ -4,7 +4,23 @@
     href: "#requestModal",
     class: "btn btn-primary btn-sm",
     data: {toggle: "modal"} %>
-<%= render 'form', req: @request %>
+<%= render 'form' %>
+<% if flash[:error] %>
+  <div class="ui alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <div class="header">
+      <%= flash.now[:error] %>
+    </div>
+  </div>
+<% end %>
+<% if flash[:success] %>
+  <div class="ui alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <div class="header">
+      <%= flash[:success] %>
+    </div>
+  </div>
+<% end %>
 <hr>
 
 <% @requests.each_with_index do |request, index|  %>

@@ -3,6 +3,22 @@
 <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
   <%= glyph(:plus) %>&nbsp;LT作成
 </button>
+<% if flash[:error] %>
+  <div class="ui alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <div class="header">
+      <%= flash.now[:error] %>
+    </div>
+  </div>
+<% end %>
+<% if flash[:success] %>
+  <div class="ui alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <div class="header">
+      <%= flash[:success] %>
+    </div>
+  </div>
+<% end %>
 
 <hr/>
 

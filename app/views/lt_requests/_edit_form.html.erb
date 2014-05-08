@@ -1,11 +1,11 @@
 <%= form_for request, url: { action: :update, id: request.id } do |form| %>
   <% modal_body = capture do %>
     <div class="form-group">
-      <%= form.label :title, "タイトル" %>
+      <%= form.label :title, "タイトル (必須)" %>
       <%= form.text_field :title, class: "form-control" %>
     </div>
     <div class="for-group">
-      <%= form.label :content, "内容" %>
+      <%= form.label :content, "内容 (必須)" %>
       <%= form.text_area :content, rows: 10, cols: 40, class: "form-control" %>
     </div>
     <h4>

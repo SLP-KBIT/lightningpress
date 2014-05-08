@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class LtScheduleController < ApplicationController
 
   def index
@@ -8,9 +9,15 @@ class LtScheduleController < ApplicationController
   def create
     @lightningtalk = Lightningtalk.new(lightningtalks_params)
     @lightningtalk.member_id = @current_member.id
-    @lightningtalk.save
-
-    redirect_to lt_schedule_index_path
+    @result = @lightningtalk.save
+    if @result
+      flash.now[:success] = "LTを登録しました。"
+      @lightningtalk = Lightningtalk.new
+    else 
+      flash.now[:error] = "LTの登録に失敗しました。"
+    end
+    @lightningtalks = Lightningtalk.all
+    render action: :index
   end
 
   def lightningtalks_params
