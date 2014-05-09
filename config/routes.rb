@@ -14,7 +14,9 @@ LightningPress::Application.routes.draw do
   resources :request_comments, except: :index
   resources :candidates
   resources :lightningtalks
+  get "lightningtalks/:id/archive" => "lightningtalks#archive", as: :lightningtalk_id
   resources :lt_schedule
+  
 
   namespace "admin" do
     resources :members
