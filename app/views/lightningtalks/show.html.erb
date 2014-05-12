@@ -22,10 +22,13 @@
         <td><%= @lightningtalk.content_path.blank? ? "資料はまだない" : link_to("ダウンロード", :action => :archive) %></td>
       </tr>
     </table>
-    <%= content_tag :button, "編集",
-	            href: "#editLightningtalkModal#{@lightningtalk.id}",
+    <% if @current_member.id == @lightningtalk.member.id then %>
+      <%= content_tag :button, "編集",
+	                  href: "#editLightningtalkModal#{@lightningtalk.id}",
                     class: "btn btn-primary btn-sm",
                     data: {toggle: "modal"} %>
-    <%= render 'edit_form', lightningtalk: @lightningtalk %>
+
+      <%= render 'edit_form', lightningtalk: @lightningtalk %>
+    <% end %>
   <div>
 <div>
