@@ -22,7 +22,7 @@
         <td><%= @lightningtalk.content_path.blank? ? "資料はまだない" : link_to("ダウンロード", :action => :archive) %></td>
       </tr>
     </table>
-    <% if @current_member.id == @lightningtalk.member.id then %>
+    <% if @current_member.id == @lightningtalk.member.id || @current_member.is_admin? then %>
       <%= content_tag :button, "編集",
 	                  href: "#editLightningtalkModal#{@lightningtalk.id}",
                     class: "btn btn-primary btn-sm",
