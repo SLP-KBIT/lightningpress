@@ -1,14 +1,14 @@
 <%= form_for comment  do |form| %>
 
   <% modal_body = capture do %>
-    <%= form.hidden_field :request_id %>
+    <%= form.hidden_field :lightningtalk_id %>
     <div class="form-group">
       <%= form.label :content, "コメント" %>
       <%= form.text_field :content, class: "form-control" %>
     </div>
   <% end %>
 
-  <%= modal_dialog id: "requestCommentModal#{comment.request_id}",
+  <%= modal_dialog id: "ltCommentModal",
       header: { show_close: true, dismiss: 'modal', title: 'コメント' },
       body: modal_body,
       footer: form.submit("投稿", class: "btn btn-primary") + content_tag(:button, "閉じる", class: "btn btn-default", 'data-dismiss' => "modal") %>
