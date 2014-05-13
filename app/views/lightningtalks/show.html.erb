@@ -18,6 +18,10 @@
         <td><%= @lightningtalk.performance_date.to_s(:date) %></td>
       </tr>
       <tr>
+        <th>詳細</th>
+        <td><%= @lightningtalk.sumally %></td>
+      </tr>
+      <tr>
         <th>資料</th>
         <td><%= @lightningtalk.content_path.blank? ? "資料はまだない" : link_to("ダウンロード", :action => :archive) %></td>
       </tr>
@@ -56,6 +60,16 @@
       <div class="panel-body">
         <%= lt_comment.content %>
       </div>
+      <% if lt_comment.member_id == @current_member.id || @current_member.is_admin %>
+        <%= content_tag :a, "削除",
+            href:"#disableLt_comment#{lt_comment.id}",
+            class: "btn btn-danger btn-xs",
+            data: {toggle:"modal"} %>
+        <%= modal_dialog :id => "disableLt_comment#{lt_comment.id}",
+            :header => { :show_close => true, :dismiss => 'modal', :content =>"#{lt_comment.content}" },
+            :body   => "このコメントを削除しますか?",
+            :footer => link_to("はい", lt_comments_disable_path(lt_comment.id), method: :get, class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal" ) %>
+      <% end %>
     </div>
   <% end %>
 <% end %>
