@@ -24,9 +24,9 @@
     </table>
     <% if @current_member.id == @lightningtalk.member.id || @current_member.is_admin? then %>
       <%= content_tag :button, "編集",
-	                  href: "#editLightningtalkModal#{@lightningtalk.id}",
-                    class: "btn btn-primary btn-sm",
-                    data: {toggle: "modal"} %>
+	        href: "#editLightningtalkModal#{@lightningtalk.id}",
+          class: "btn btn-primary btn-sm",
+          data: {toggle: "modal"} %>
 
       <%= render 'edit_form', lightningtalk: @lightningtalk %>
     <% end %>
@@ -38,9 +38,9 @@
 <h3>コメント一覧</h3>
 
 <%= content_tag :button, "コメントする",
-                href: "#ltCommentModal",
-                class: "btn btn-sm btn-primary",
-                data: {toggle: "modal"} %>
+    href: "#ltCommentModal",
+    class: "btn btn-sm btn-primary",
+    data: {toggle: "modal"} %>
 <%= render 'lt_comments/form', { comment: @lightningtalk.lt_comments.build } %>
 
 <br>

@@ -17,5 +17,5 @@ class LtCommentsController < ApplicationController
       :member_id,
       :content
     )
-   end
+  end
 end
