@@ -21,4 +21,5 @@
 vendor/bundler
 vendor/ruby
 config/database.yml
-public/pdf/
+public/pdf/*
+!.gitkeep

@@ -26,4 +26,8 @@ LightningPress::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  BetterErrors::Middleware.allow_ip! "133.92.145.0/24"
+  BetterErrors.use_pry!
+  
 end

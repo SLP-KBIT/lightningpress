@@ -10,6 +10,7 @@ LightningPress::Application.routes.draw do
   root :to => "users#top"
   resources :users
   resources :lt_requests
+  resources :lt_comments
   resources :logins
   resources :request_comments, except: :index
   resources :candidates
