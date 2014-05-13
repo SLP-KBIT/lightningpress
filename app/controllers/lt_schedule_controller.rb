@@ -7,6 +7,10 @@ class LtScheduleController < ApplicationController
 
   def create
     @lightningtalk = Lightningtalk.new(lightningtalks_params)
+  end
+
+  def create
+    @lightningtalk = Lightningtalk.new(lightningtalks_params)
     @lightningtalk.member_id = @current_member.id
     @lightningtalk.save
 
