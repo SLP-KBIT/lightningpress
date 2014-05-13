@@ -1,2 +1,0 @@
-class RequestNotificationController < ApplicationController
-end
