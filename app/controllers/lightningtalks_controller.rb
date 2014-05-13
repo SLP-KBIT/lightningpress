@@ -1,9 +1,8 @@
 class LightningtalksController < ApplicationController
   def show
-    @lightningtalks = Lightningtalk.all
-    id = params[:id].to_i
-    @lightningtalk = @lightningtalks.where(id: id).first
+    @lightningtalk = Lightningtalk.where(id: params[:id]).first
     @members = Member.all
+    @lt_comments = @lightningtalk.lt_comments.select{|lc| ! lc.new_record? }
   end
 
   def update
