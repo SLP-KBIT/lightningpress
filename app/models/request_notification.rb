@@ -11,4 +11,9 @@
 #
 
 class RequestNotification < ActiveRecord::Base
+  module  ResponseStatus
+    Unread = 0
+    Accept = 1
+    Refuse = 2
+  end
 end
