@@ -1,0 +1,2 @@
+module RequestNotificationHelper
+end
