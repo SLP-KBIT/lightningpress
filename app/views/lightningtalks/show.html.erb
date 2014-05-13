@@ -30,5 +30,32 @@
 
       <%= render 'edit_form', lightningtalk: @lightningtalk %>
     <% end %>
-  <div>
-<div>
+  </div>
+</div>
+
+<hr>
+
+<h3>コメント一覧</h3>
+
+<%= content_tag :button, "コメントする",
+                href: "#ltCommentModal",
+                class: "btn btn-sm btn-primary",
+                data: {toggle: "modal"} %>
+<%= render 'lt_comments/form', { comment: @lightningtalk.lt_comments.build } %>
+
+<br>
+
+<% if @lightningtalk.lt_comments.empty? %>
+  <p>コメントはありません</p>
+<% else %>
+  <% @lightningtalk.lt_comments.order("created_at DESC").each do |lt_comment| %>
+    <div class="panel panel-default" style="margin: 5px; width: 250px;">
+      <div class="panel-heading">
+        <font color="gray"><%= lt_comment.created_at.strftime("%Y/%m/%d %H:%M") %></font> by <strong><%= lt_comment.member.account %></strong>
+      </div>
+      <div class="panel-body">
+        <%= lt_comment.content %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
