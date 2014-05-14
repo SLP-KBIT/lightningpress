@@ -9,6 +9,16 @@
       <div class="panel-body">
         <%= request_comment.content %>
       </div>
+
+      <%= content_tag :a, "削除",
+         href: "#disableRequest_comment#{request_comment.id}",
+         class: "btn btn-danger btn-xs",
+         data: {toggle:"modal"} %>
+      <%= modal_dialog :id => "disableRequest_comment#{request_comment.id}",
+          :header => { :show_close => true, :dismiss => 'modal', :content => "#{request_comment.content}" },
+          :body   => "このコメントを削除しますか?",
+          :footer => link_to("はい", request_comments_disable_path(request_comment.id), method: :get, class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal" ) %>
+
     </div>
   <% end %>
 <% end %>

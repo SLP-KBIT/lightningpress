@@ -15,6 +15,12 @@ class RequestCommentsController < ApplicationController
     redirect_to lt_requests_path
   end
 
+  def disable
+    @request_comment = RequestComment.find(params[:id])
+    @request_comment.destroy
+    redirect_to lt_requests_path(@request_comment.request_id)
+  end
+
   private
 
   def request_comments_params
