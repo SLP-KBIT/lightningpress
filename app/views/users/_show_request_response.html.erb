@@ -1,0 +1,30 @@
+<h3>申請結果</h3>
+
+<% if @responses.blank? then %>
+  <div class="notificationbox">
+    <h4>あなたへの通知はありません</h4>
+  </div>
+<% else %>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <th>タイトル</th>
+      <th>依頼作成日</th>
+      <th>LT依頼先</th>
+    </thead>
+    <tbody>
+      <% @responses.each do |response| %>
+        <tr>
+          <td><%= response.request.title %></td>
+          <td><%= response.request.created_at.strftime("%F") %></td>
+          <td><%= response.member.account %></td>
+          <% if response.response_status == RequestNotification::ResponseStatus::Refuse %>
+            <td>依頼は受諾されませんでした。</td>
+          <% elsif response.response_status == RequestNotification::ResponseStatus::Accept %>
+            <td>依頼は受諾されました。</td>
+          <% end %>
+          <td><%= link_to '削除', response, :method=> :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

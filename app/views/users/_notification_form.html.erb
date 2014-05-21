@@ -1,0 +1,23 @@
+<%= content_tag :a, "#{request.title}",
+                href: "#notificationModal#{request.id}",
+                data: {toggle: "modal"}%>
+
+<%= form_for request, url: {controller: :request_notifications, action: :update, id: request.id } do |form| %>
+    <% modal_body = capture do %>
+    <div class="form-group">
+      <%= form.label :title, "タイトル" %>
+      <%= form.text_field :title, class: "form-control", readonly: true %>
+    </div>
+    <div class="for-group">
+      <%= form.label :content, "内容" %>
+      <%= form.text_area :content, rows: 10, cols: 40, class: "form-control", readonly: true %>
+    </div>
+    <%= form.hidden_field :presenter_id, value: request.presenter_id %>
+  <% end %>
+    
+  <%= modal_dialog :id => "notificationModal#{request.id}",
+      :header => { :show_close => true, :dismiss => 'modal', :title =>"LT依頼" },
+      :body   => modal_body,
+      :footer => form.submit("受諾", class: "btn btn-primary", name: "response") + form.submit("拒否", class: "btn btn-danger", name: "response") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal")  %>
+
+<% end %>

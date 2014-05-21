@@ -17,6 +17,7 @@ LightningPress::Application.routes.draw do
   resources :lightningtalks
   get "lightningtalks/:id/archive" => "lightningtalks#archive", as: :lightningtalk_id
   resources :lt_schedule
+  resources :request_notifications
   
 
   namespace "admin" do

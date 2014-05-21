@@ -1,0 +1,22 @@
+<h3>未定のLT</h3>
+
+<% if @undecided_lithtningtalks.blank? %>
+  <h4>未定のLTはありません</h4>
+<% else %>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr href="top">
+        <th>タイトル</th>
+        <th>担当者</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @undecided_lithtningtalks.each do |schedule| %>
+        <tr>
+          <td><%= link_to "#{schedule.name}", schedule %>
+          <td><%= schedule.member.account %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
