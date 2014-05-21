@@ -7,7 +7,7 @@
       </div>
       <div class="form-group">
         <%= form.label :performance_date, '発表日時' %>
-        <%= form.datetime_field :performance_date, class: "form-control", value: lightningtalk.performance_date.strftime("%F") %>
+        <%= form.datetime_field :performance_date, class: "form-control", value: @lightningtalk_date %>
       </div>
       <div class="form-group">
         <%= form.label :sumally, '概要'%>

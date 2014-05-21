@@ -12,12 +12,11 @@ class LtRequestsController < ApplicationController
     unless @request.presenter_id.nil? then
       @request.status = Request::Status::Waiting
       @request.save
-      @notification = RequestNotification.new(
+      @notification = RequestNotification.create(
         receiver_id: @request.presenter_id,
         request_id: @request.id,
         response_status: RequestNotification::ResponseStatus::Unread
       )
-      @notification.save
     else
       @request.status = Request::Status::None
       @request.save
