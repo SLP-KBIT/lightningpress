@@ -26,5 +26,9 @@ class Member < ActiveRecord::Base
 
   has_secure_password
 
+  validates :student_number, presence: true, uniqueness: true
+  validates :name, :account, presence: true
+  validates :is_admin, inclusion: { in: [true, false]}
+
   scope :id_is, -> (id) { where(id: id) }
 end

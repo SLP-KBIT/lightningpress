@@ -7,6 +7,7 @@ class Admin::MembersController < ApplicationController
   end
 
   def new
+    @member = Member.new
   end
 
   def create
