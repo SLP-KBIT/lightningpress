@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def show_request_response
-    @responses = RequestNotification.where(receiver_id: @current_member.id).where.not(response_status: RequestNotification::ResponseStatus::Unread)
+    @responses = Request.where(contributor_id: @current_member.id).map(&:request_notification).compact.select{ |response| response.response_status != RequestNotification::ResponseStatus::Unread}
   end
 
   def member_params
