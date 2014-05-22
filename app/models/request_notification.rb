@@ -11,4 +11,25 @@
 #
 
 class RequestNotification < ActiveRecord::Base
+  
+  belongs_to :member, foreign_key: :receiver_id, class_name: Member
+  belongs_to :request, foreign_key: :request_id, class_name: Request
+
+  module  ResponseStatus
+    Unread = 0
+    Accept = 1
+    Refuse = 2
+  end
+
+  def response_status_unread?
+    response_status == ResponseStatus::Unread
+  end
+
+  def response_status_accept?
+    response_status == ResponseStatus::Accept
+  end
+
+  def response_status_refuse?
+    response_status == ResponseStatus::Refuse    
+  end
 end

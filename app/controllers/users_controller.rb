@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     planning_lightningtalks
     finished_lightningtalks
     your_lightningtalks
+    show_notification
+    undecided_lightnigtalks
+    show_request_response
   end
 
   def update
@@ -36,6 +39,18 @@ class UsersController < ApplicationController
 
   def your_lightningtalks
     @your_lightningtalks = Lightningtalk.order("performance_date").where(member_id: @current_member.id).where("performance_date >= ?", Date.today).first(3)
+  end
+  
+  def show_notification
+    @notifications = RequestNotification.where(receiver_id: @current_member.id).where(response_status: RequestNotification::ResponseStatus::Unread)
+  end
+
+  def undecided_lightnigtalks
+    @undecided_lithtningtalks = Lightningtalk.where(performance_date: nil).where(member_id: @current_member.id)
+  end
+
+  def show_request_response
+    @responses = RequestNotification.where(receiver_id: @current_member.id).where.not(response_status: RequestNotification::ResponseStatus::Unread)
   end
 
   def member_params

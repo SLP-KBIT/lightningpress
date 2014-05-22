@@ -1,0 +1,22 @@
+<h3>あなたへのLT依頼</h3>
+
+<% if @notifications.blank? then %>
+  <div class="notificationbox">
+    <h4>あなたへの依頼はありません</h4>
+  </div>
+<% else %>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <th>タイトル</th>
+      <th>依頼作成日</th>
+    </thead>
+    <tbody>
+      <% @notifications.each do |notification| %>
+        <tr>
+          <td><%= render 'notification_form', request: notification.request %></td>
+          <td><%= notification.created_at.strftime("%F") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
