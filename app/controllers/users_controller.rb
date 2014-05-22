@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def undecided_lightnigtalks
-    @undecided_lithtningtalks = Lightningtalk.where(performance_date: nil)
+    @undecided_lithtningtalks = Lightningtalk.where(performance_date: nil).where(member_id: @current_member.id)
   end
 
   def show_request_response
