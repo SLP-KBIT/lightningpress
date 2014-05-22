@@ -1,8 +1,5 @@
-<h3>未定のLT</h3>
-
-<% if @undecided_lithtningtalks.blank? %>
-  <h4>未定のLTはありません</h4>
-<% else %>
+<% unless @undecided_lithtningtalks.blank? %>
+  <h4><font color="red">日付が未決定のあなたの担当LTがあります。</font></h4>
   <table class="table table-bordered table-hover">
     <thead>
       <tr href="top">
