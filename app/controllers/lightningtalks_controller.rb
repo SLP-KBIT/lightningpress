@@ -25,6 +25,13 @@ class LightningtalksController < ApplicationController
     send_file("#{filename}")
   end
 
+  def destroy
+    @lightningtalk = Lightningtalk.where(id: params[:id]).first
+    @lightningtalk.destroy
+
+    redirect_to lt_schedule_index_path
+  end
+
   private
 
   def lightningtalk_params

@@ -31,12 +31,22 @@
       </tr>
     </table>
     <% if @current_member.id == @lightningtalk.member.id || @current_member.is_admin? then %>
-      <%= content_tag :button, "編集",
-	        href: "#editLightningtalkModal#{@lightningtalk.id}",
-          class: "btn btn-primary btn-sm",
-          data: {toggle: "modal"} %>
-
-      <%= render 'edit_form', lightningtalk: @lightningtalk %>
+      <div class="row">
+        <%= content_tag :a, "削除",
+            href:"#deletelightningtalk",
+            class: "btn btn-danger btn-sm col-md-2",
+            style: "margin: 0px 15px;",
+            data: {toggle:"modal"} %>
+        <%= modal_dialog :id => "deletelightningtalk",
+            :header => { :show_close => true, :dismiss => 'modal', :title =>"#{@lightningtalk.name}"},
+            :body   => "このLTを削除しますか?",
+            :footer => link_to("はい", @lightningtalk, method: :delete, class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal" ) %>
+        <%= content_tag :a, "編集",
+	          href: "#editLightningtalkModal#{@lightningtalk.id}",
+            class: "btn btn-primary btn-sm col-md-2",
+            data: {toggle: "modal"} %>
+        <%= render 'edit_form', lightningtalk: @lightningtalk %>
+      </div>
     <% end %>
   </div>
 </div>
