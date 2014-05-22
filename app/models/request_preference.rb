@@ -11,4 +11,12 @@
 #
 
 class RequestPreference < ActiveRecord::Base
+  belongs_to :request
+  belongs_to :member
+
+  validates :request_id, presence: true, uniqueness: {scope: [:member_id]}
+  validates :member_id, presence: true
+  validates :grade, inclusion: {in: 1..5}
+  validates_associated :request, :member
+
 end

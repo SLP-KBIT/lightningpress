@@ -11,9 +11,13 @@
 #
 
 class RequestNotification < ActiveRecord::Base
-  
-  belongs_to :member, foreign_key: :receiver_id, class_name: Member
+
+  belongs_to :receiver, foreign_key: :receiver_id, class_name: Member
   belongs_to :request, foreign_key: :request_id, class_name: Request
+
+  validates :receiver_id, :request_id, presence: true
+  #validates :response_status, inclusion: {in: []}
+  validates_associated :receiver, :request
 
   module  ResponseStatus
     Unread = 0
@@ -30,6 +34,7 @@ class RequestNotification < ActiveRecord::Base
   end
 
   def response_status_refuse?
-    response_status == ResponseStatus::Refuse    
+    response_status == ResponseStatus::Refuse
   end
+
 end
