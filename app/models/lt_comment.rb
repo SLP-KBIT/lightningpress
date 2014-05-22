@@ -16,6 +16,7 @@ class LtComment < ActiveRecord::Base
   belongs_to :member, foreign_key: :member_id, class_name: Member
   belongs_to :lightningtalk, foreign_key: :lightningtalk_id, class_name: Lightningtalk
   validates :member_id, :lightningtalk_id, :content, presence: true
+  #validates :content, presence: true
   validates_associated :member, :lightningtalk
 
 end
