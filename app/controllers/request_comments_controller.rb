@@ -15,10 +15,10 @@ class RequestCommentsController < ApplicationController
     redirect_to lt_requests_path
   end
 
-  def disable
+  def destroy
     @request_comment = RequestComment.find(params[:id])
     @request_comment.destroy
-    redirect_to lt_requests_path(@request_comment.request_id)
+    redirect_to lt_requests_path
   end
 
   private
