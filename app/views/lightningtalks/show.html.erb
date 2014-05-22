@@ -66,7 +66,7 @@
             class: "btn btn-danger btn-xs",
             data: {toggle:"modal"} %>
         <%= modal_dialog :id => "disableLt_comment#{lt_comment.id}",
-            :header => { :show_close => true, :dismiss => 'modal', :content =>"#{lt_comment.content}" },
+            :header => { :show_close => true, :dismiss => 'modal', :title =>"#{lt_comment.content}" },
             :body   => "このコメントを削除しますか?",
             :footer => link_to("はい", lt_comments_disable_path(lt_comment.id), method: :get, class: "btn btn-primary") + content_tag(:button, "キャンセル", class: "btn btn-default", 'data-dismiss' => "modal" ) %>
       <% end %>
