@@ -4,6 +4,7 @@ LightningPress::Application.routes.draw do
   get "lt_schedule/index"
   get "candidates/:id/disable" => "candidates#disable", as: :candidates_disable
   get "lt_requests/:id/disable" => "lt_requests#disable", as: :lt_requests_disable
+  get "lt_comments/:id/disable" => "lt_comments#disable", as: :lt_comments_disable
   put "candidates/:id/choose" => "candidates#choose", as: 'choose_candidate'
   get "request_to" => "lt_requests#request_to"
 
@@ -17,7 +18,7 @@ LightningPress::Application.routes.draw do
   resources :lightningtalks
   get "lightningtalks/:id/archive" => "lightningtalks#archive", as: :lightningtalk_id
   resources :lt_schedule
-  
+
 
   namespace "admin" do
     resources :members
