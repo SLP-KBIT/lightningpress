@@ -18,7 +18,7 @@
         <tr>
           <td><%= response.request.title %></td>
           <td><%= response.request.created_at.strftime("%F") %></td>
-          <td><%= response.member.account %></td>
+          <td><%= response.receiver.account %></td>
           <% if response.response_status == RequestNotification::ResponseStatus::Refuse %>
             <td>依頼は受諾されませんでした。</td>
           <% elsif response.response_status == RequestNotification::ResponseStatus::Accept %>

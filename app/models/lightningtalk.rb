@@ -19,10 +19,14 @@ class Lightningtalk < ActiveRecord::Base
   has_many :lt_comments
   has_many :lt_preferences
 
+  validates :name, :member_id, :performance_date, :sumally, presence: true
+  validates_associated :member
+
   def file_save(file)
     self.content_path = 'public/pdf/' + file.original_filename
     File.open(self.content_path, "wb") do |f|
       f.write file.read
     end
   end
+
 end
