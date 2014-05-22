@@ -19,7 +19,7 @@ class Lightningtalk < ActiveRecord::Base
   has_many :lt_comments
   has_many :lt_preferences
 
-  validates :name, :member_id, :performance_date, :sumally, presence: true
+  validates :name, :member_id, :sumally, presence: true
   validates_associated :member
 
   def file_save(file)
