@@ -14,6 +14,6 @@
 class RequestComment < ActiveRecord::Base
   acts_as_paranoid
   
-  belongs_to :member
-  belongs_to :request
+  belongs_to :member, foreign_key: :member_id, class_name: Member
+  belongs_to :request, foreign_key: :reqest_id, class_name: Request
 end
