@@ -1,6 +1,11 @@
 class LightningtalksController < ApplicationController
   def show
     @lightningtalk = Lightningtalk.where(id: params[:id]).first
+    if @lightningtalk.performance_date.nil?
+      @lightningtalk_date = DateTime.now.strftime("%Y-%m-%d")
+    else
+      @lightningtalk_date = @lightningtalk.performance_date.strftime("%Y-%m-%d")
+    end
     @members = Member.all
     @lt_comments = @lightningtalk.lt_comments.select{|lc| ! lc.new_record? }
   end

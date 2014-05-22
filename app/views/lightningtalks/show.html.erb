@@ -15,7 +15,11 @@
       </tr>
       <tr>
         <th>日付</th>
-        <td><%= @lightningtalk.performance_date.to_s(:date) %></td>
+        <% if @lightningtalk.performance_date.nil? %>
+          <td>日付は未定です</td>
+        <% else %>
+          <td><%= @lightningtalk.performance_date.to_s(:date) %></td>
+        <% end %>
       </tr>
       <tr>
         <th>詳細</th>
