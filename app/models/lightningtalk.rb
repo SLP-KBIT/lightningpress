@@ -16,8 +16,8 @@
 class Lightningtalk < ActiveRecord::Base
   acts_as_paranoid
   belongs_to :member, foreign_key: :member_id, class_name: Member
-  has_many :lt_comments
-  has_many :lt_preferences
+  has_many :lt_comments, dependent: :delete_all
+  has_many :lt_preferences, dependent: :delete_all
 
   validates :name, :member_id, :sumally, presence: true
   validates_associated :member
