@@ -1,15 +1,18 @@
 <h1>ログイン</h1>
 
-<p><font color=red><%= flash[:alert] %></font></p>
-
-<%= form_tag logins_path, class: "form" do %>
-  <div class="form-group">
-    <%= label_tag :account, "アカウント名" %>
-    <%= text_field_tag :account, params[:account], class: "form-control" %>
+<div class="row">
+  <div class="col-md-4">
+    <p><font color=red><%= flash[:alert] %></font></p>
+    <%= form_tag logins_path, class: "form" do %>
+      <div class="form-group">
+        <%= label_tag :account, "アカウント名" %>
+        <%= text_field_tag :account, params[:account], class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :pass, "パスワード" %>
+        <%= password_field_tag :pass, params[:pass], class: "form-control" %>
+      </div>
+      <%= submit_tag "ログイン", class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <div class="form-group">
-    <%= label_tag :pass, "パスワード" %>
-    <%= password_field_tag :pass, params[:pass], class: "form-control" %>
-  </div>
-  <%= submit_tag "ログイン", class: "btn btn-primary" %>
-<% end %>
+</div>
