@@ -31,7 +31,6 @@ class Request < ActiveRecord::Base
   end
 
   validates :contributor_id, :title, :content, presence: true
-  validates :title, :content, presence: true
   validates :status, inclusion: {in: [Status::None, Status::Waiting, Status::Assigned]}
   validates_associated :contributor, :presenter
 
