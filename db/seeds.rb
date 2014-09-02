@@ -24,6 +24,4 @@ Candidate.create(request_id:cem_request.id, member_id:anyone.id)
 
 LtPreference.create(lightningtalk_id:slp.id, grade:3, member_id:engineer.id)
 
-RequestPreference.create(request_id:slp_request.id, grade:0, member_id:ookawa.id)
-
 RequestNotification.create(receiver_id:anyone.id, request_id:labo_request.id, response_status:0)
