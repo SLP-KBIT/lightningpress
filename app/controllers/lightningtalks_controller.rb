@@ -1,14 +1,9 @@
 class LightningtalksController < ApplicationController
-  before_action :find_lightningtalk, only: %i(show update archive destroy)
+  before_action :find_lightningtalk, only: [:show, :update, :archive, :destroy]
 
   def show
-    if @lightningtalk.performance_date.nil?
-      @lightningtalk_date = DateTime.now.strftime("%Y-%m-%d")
-    else
-      @lightningtalk_date = @lightningtalk.performance_date.strftime("%Y-%m-%d")
-    end
     @members = Member.all
-    @lt_comments = @lightningtalk.lt_comments.select{|comment| ! comment.new_record? }
+    @lt_comments = @lightningtalk.lt_comments.select{ |comment| ! comment.new_record? }
   end
 
   def update
@@ -32,7 +27,7 @@ class LightningtalksController < ApplicationController
   private
 
   def find_lightningtalk
-    @Lightningtalk = Lightningtalk.where(id: params[:id]).first
+    @lightningtalk = Lightningtalk.where(id: params[:id]).first
   end
 
   def lightningtalk_params
