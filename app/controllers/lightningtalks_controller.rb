@@ -3,7 +3,7 @@ class LightningtalksController < ApplicationController
 
   def show
     @members = Member.all
-    @lt_comments = @lightningtalk.lt_comments.select{ |comment| ! comment.new_record? }
+    @lt_comments = @lightningtalk.lt_comments
   end
 
   def update
