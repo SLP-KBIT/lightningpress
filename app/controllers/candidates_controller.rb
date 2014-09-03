@@ -19,7 +19,7 @@ class CandidatesController < ApplicationController
   end
 
   def disable
-    @candidate = Candidate.find(params[:id])
+    @candidate = Candidate.where(id: params[:id]).first
     @candidate.destroy
     redirect_to lt_requests_path
   end
