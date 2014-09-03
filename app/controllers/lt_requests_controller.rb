@@ -19,7 +19,7 @@ class LtRequestsController < ApplicationController
       )
     else
       @request.status = Request::Status::None
-      @request.save
+      @request.save!
     end
     redirect_to lt_requests_path
   end
