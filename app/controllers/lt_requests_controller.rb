@@ -57,7 +57,6 @@ class LtRequestsController < ApplicationController
       :title,
       :content,
       :presenter_id,
-      :contributor_id,
       :status
     )
   end
