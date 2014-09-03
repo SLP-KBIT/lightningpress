@@ -2,7 +2,7 @@ class LtCommentsController < ApplicationController
   def create
     @lt_comment = LtComment.new(lt_comment_params)
     @lt_comment.member_id = @current_member.id
-    @lt_comment.save
+    @lt_comment.save!
     redirect_to lightningtalk_path(@lt_comment.lightningtalk_id)
   end
 
