@@ -10,7 +10,7 @@ class LtCommentsController < ApplicationController
   end
 
   def disable
-    @lt_comment = LtComment.find(params[:id])
+    @lt_comment = LtComment.where(id: params[:id]).first
     @lt_comment.destroy
     redirect_to lightningtalk_path(@lt_comment.lightningtalk.id)
   end
