@@ -20,7 +20,6 @@ class LtCommentsController < ApplicationController
   def lt_comment_params
     params.require(:lt_comment).permit(
       :lightningtalk_id,
-      :member_id,
       :content
     )
   end
