@@ -7,7 +7,7 @@ class LightningtalksController < ApplicationController
       @lightningtalk_date = @lightningtalk.performance_date.strftime("%Y-%m-%d")
     end
     @members = Member.all
-    @lt_comments = @lightningtalk.lt_comments.select{|lc| ! lc.new_record? }
+    @lt_comments = @lightningtalk.lt_comments.select{|comment| ! comment.new_record? }
   end
 
   def update
