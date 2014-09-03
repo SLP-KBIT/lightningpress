@@ -9,7 +9,7 @@ class LtRequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.contributor_id = @current_member.id
-    unless @request.presenter_id.nil? then
+    unless @request.presenter_id.nil?
       @request.status = Request::Status::Waiting
       @request.save
       @notification = RequestNotification.create(
