@@ -1,6 +1,7 @@
 class LightningtalksController < ApplicationController
+  before_action :find_lightningtalk, only: %i(show update archive destroy)
+
   def show
-    @lightningtalk = Lightningtalk.where(id: params[:id]).first
     if @lightningtalk.performance_date.nil?
       @lightningtalk_date = DateTime.now.strftime("%Y-%m-%d")
     else
@@ -11,7 +12,6 @@ class LightningtalksController < ApplicationController
   end
 
   def update
-    @lightningtalk = Lightningtalk.where(id: params[:id]).first
     unless params[:lightningtalk][:file].blank?
       @lightningtalk.file_save(params[:lightningtalk][:file])
     end
@@ -20,19 +20,20 @@ class LightningtalksController < ApplicationController
   end
 
   def archive
-    @lightningtalk = Lightningtalk.where(id: params[:id]).first
     filename = @lightningtalk.content_path
     send_file("#{filename}")
   end
 
   def destroy
-    @lightningtalk = Lightningtalk.where(id: params[:id]).first
     @lightningtalk.destroy
-
     redirect_to lt_schedule_index_path
   end
 
   private
+
+  def find_lightningtalk
+    @Lightningtalk = Lightningtalk.where(id: params[:id]).first
+  end
 
   def lightningtalk_params
     params.require(:lightningtalk).permit(
