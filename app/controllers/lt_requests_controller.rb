@@ -11,7 +11,6 @@ class LtRequestsController < ApplicationController
     @request.contributor_id = @current_member.id
     unless @request.presenter_id.nil?
       @request.status = Request::Status::Waiting
-      @request.save!
       @notification = RequestNotification.create(
         receiver_id: @request.presenter_id,
         request_id: @request.id,
@@ -19,8 +18,8 @@ class LtRequestsController < ApplicationController
       )
     else
       @request.status = Request::Status::None
-      @request.save!
     end
+    @request.save!
     redirect_to lt_requests_path
   end
 
