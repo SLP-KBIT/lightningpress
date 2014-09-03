@@ -39,7 +39,7 @@ class LtRequestsController < ApplicationController
   end
 
   def disable
-    @request = Request.find(params[:id])
+    @request = Request.where(id: params[:id]).first
     @request.destroy
     redirect_to lt_requests_path
   end
