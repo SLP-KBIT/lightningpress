@@ -9,15 +9,14 @@ class LtRequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.contributor_id = @current_member.id
-    unless @request.presenter_id.nil?
+    if @request.presenter_id
+      @request.status = Request::Status::None
+    else
       @request.status = Request::Status::Waiting
-      @notification = RequestNotification.create(
+      @notification = @request.build_request_notification(
         receiver_id: @request.presenter_id,
-        request_id: @request.id,
         response_status: RequestNotification::ResponseStatus::Unread
       )
-    else
-      @request.status = Request::Status::None
     end
     @request.save!
     redirect_to lt_requests_path
