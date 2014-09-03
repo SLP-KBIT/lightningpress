@@ -7,7 +7,7 @@ class LtRequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(requests_params)
+    @request = Request.new(request_params)
     @request.contributor_id = @current_member.id
     unless @request.presenter_id.nil? then
       @request.status = Request::Status::Waiting
@@ -54,7 +54,7 @@ class LtRequestsController < ApplicationController
 
   private
 
-  def requests_params
+  def request_params
     params.require(:request).permit(
       :title,
       :content,
