@@ -11,7 +11,7 @@ class LtRequestsController < ApplicationController
     @request.contributor_id = @current_member.id
     unless @request.presenter_id.nil?
       @request.status = Request::Status::Waiting
-      @request.save
+      @request.save!
       @notification = RequestNotification.create(
         receiver_id: @request.presenter_id,
         request_id: @request.id,
