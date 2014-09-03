@@ -1,7 +1,6 @@
 class CandidatesController < ApplicationController
   def create
-    @candidate = Candidate.new(candidates_params)
-    @candidate.member_id = @current_member.id
+    @candidate = @current_member.candidates.build(candidates_params)
     @candidate.save
     redirect_to lt_requests_path
   end
