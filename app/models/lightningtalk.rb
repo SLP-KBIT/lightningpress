@@ -9,7 +9,7 @@
 #  content_path     :text
 #  created_at       :datetime
 #  updated_at       :datetime
-#  sumally          :text
+#  summary          :text
 #  deleted_at       :datetime
 #
 
@@ -19,7 +19,7 @@ class Lightningtalk < ActiveRecord::Base
   has_many :lt_comments, dependent: :delete_all
   has_many :lt_preferences, dependent: :delete_all
 
-  validates :name, :member_id, :sumally, presence: true
+  validates :name, :member_id, :summary, presence: true
   validates_associated :member
 
   def file_save(file)
