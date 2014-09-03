@@ -20,7 +20,7 @@ class LightningtalksController < ApplicationController
   end
 
   def archive
-    @lightningtalk = Lightningtalk.all.where(id: params[:id]).first
+    @lightningtalk = Lightningtalk.where(id: params[:id]).first
     filename = @lightningtalk.content_path
     send_file("#{filename}")
   end
