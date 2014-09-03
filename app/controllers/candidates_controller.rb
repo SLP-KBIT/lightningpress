@@ -1,7 +1,7 @@
 class CandidatesController < ApplicationController
   def create
     @candidate = @current_member.candidates.build(candidates_params)
-    @candidate.save
+    @candidate.save!
     redirect_to lt_requests_path
   end
 
