@@ -10,7 +10,7 @@
 engineer = Member.create(name:"Engineer", student_number:"s00t200", account:"engineer", password:"slp", password_confirmation:"slp", is_admin:true)
 anyone = Member.create(name:"Anyone", student_number:"s00t000", account:"anyone", password:"lt", password_confirmation:"lt", is_admin:false)
 
-slp =  Lightningtalk.create(name:"SLP", member_id:anyone.id, sumally:"SLPの活動について", performance_date: Date.new.tomorrow, content_path:"hogehoge" )
+slp =  Lightningtalk.create(name:"SLP", member_id:anyone.id, summary:"SLPの活動について", performance_date: Date.new.tomorrow, content_path:"hogehoge" )
 
 LtComment.create(member_id:anyone.id, content:"foo", lightningtalk_id:slp.id)
 

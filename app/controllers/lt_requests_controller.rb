@@ -32,8 +32,8 @@ class LtRequestsController < ApplicationController
     @request = Request.where(id: params[:id]).first
     @request.presenter_id = params[:presenter_id]
     @request.status = Request::Status::Assigned
-    @lightningtalk = Lightningtalk.new(name: @request.title, sumally: @request.content, member_id: @request.presenter_id)
-    @lightningtalk.save!
+    @lightningtalk = Lightningtalk.new(name: @request.title, summary: @request.content, member_id: @request.presenter_id)
+    @lightningtalk.save
     @request.save!
     redirect_to lt_requests_path
   end
