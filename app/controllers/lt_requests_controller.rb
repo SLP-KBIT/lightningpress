@@ -7,20 +7,18 @@ class LtRequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(requests_params)
+    @request = Request.new(request_params)
     @request.contributor_id = @current_member.id
-    unless @request.presenter_id.nil? then
+    if @request.presenter_id
+      @request.status = Request::Status::None
+    else
       @request.status = Request::Status::Waiting
-      @request.save
-      @notification = RequestNotification.create(
+      @notification = @request.build_request_notification(
         receiver_id: @request.presenter_id,
-        request_id: @request.id,
         response_status: RequestNotification::ResponseStatus::Unread
       )
-    else
-      @request.status = Request::Status::None
-      @request.save
     end
+    @request.save!
     redirect_to lt_requests_path
   end
 
@@ -35,13 +33,13 @@ class LtRequestsController < ApplicationController
     @request.presenter_id = params[:presenter_id]
     @request.status = Request::Status::Assigned
     @lightningtalk = Lightningtalk.new(name: @request.title, sumally: @request.content, member_id: @request.presenter_id)
-    @lightningtalk.save
+    @lightningtalk.save!
     @request.save!
     redirect_to lt_requests_path
   end
 
   def disable
-    @request = Request.find(params[:id])
+    @request = Request.where(id: params[:id]).first
     @request.destroy
     redirect_to lt_requests_path
   end
@@ -54,14 +52,12 @@ class LtRequestsController < ApplicationController
 
   private
 
-  def requests_params
+  def request_params
     params.require(:request).permit(
       :title,
       :content,
       :presenter_id,
-      :contributor_id,
       :status
     )
   end
-
 end

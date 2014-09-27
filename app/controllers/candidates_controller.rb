@@ -1,8 +1,7 @@
 class CandidatesController < ApplicationController
   def create
-    @candidate = Candidate.new(candidates_params)
-    @candidate.member_id = @current_member.id
-    @candidate.save
+    @candidate = @current_member.candidates.build(candidates_params)
+    @candidate.save!
     redirect_to lt_requests_path
   end
 
@@ -19,7 +18,7 @@ class CandidatesController < ApplicationController
   end
 
   def disable
-    @candidate = Candidate.find(params[:id])
+    @candidate = Candidate.where(id: params[:id]).first
     @candidate.destroy
     redirect_to lt_requests_path
   end

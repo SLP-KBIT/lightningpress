@@ -1,17 +1,12 @@
 class LightningtalksController < ApplicationController
+  before_action :find_lightningtalk, only: [:show, :update, :archive, :destroy]
+
   def show
-    @lightningtalk = Lightningtalk.where(id: params[:id]).first
-    if @lightningtalk.performance_date.nil?
-      @lightningtalk_date = DateTime.now.strftime("%Y-%m-%d")
-    else
-      @lightningtalk_date = @lightningtalk.performance_date.strftime("%Y-%m-%d")
-    end
     @members = Member.all
-    @lt_comments = @lightningtalk.lt_comments.select{|lc| ! lc.new_record? }
+    @lt_comments = @lightningtalk.lt_comments.select{ |comment| ! comment.new_record? }
   end
 
   def update
-    @lightningtalk = Lightningtalk.where(id: params[:id]).first
     unless params[:lightningtalk][:file].blank?
       @lightningtalk.file_save(params[:lightningtalk][:file])
     end
@@ -20,19 +15,20 @@ class LightningtalksController < ApplicationController
   end
 
   def archive
-    @lightningtalk = Lightningtalk.all.where(id: params[:id]).first
     filename = @lightningtalk.content_path
     send_file("#{filename}")
   end
 
   def destroy
-    @lightningtalk = Lightningtalk.where(id: params[:id]).first
     @lightningtalk.destroy
-
     redirect_to lt_schedule_index_path
   end
 
   private
+
+  def find_lightningtalk
+    @lightningtalk = Lightningtalk.where(id: params[:id]).first
+  end
 
   def lightningtalk_params
     params.require(:lightningtalk).permit(

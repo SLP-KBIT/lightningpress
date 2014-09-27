@@ -1,4 +1,3 @@
-
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -8,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def current_member
     if session[:member_id]
-      @current_member ||= Member.where(id: session[:member_id]).first
+      @current_member ||= Member.id_is(session[:member_id]).first
     end
   end
 
