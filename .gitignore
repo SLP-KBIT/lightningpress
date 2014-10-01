@@ -23,3 +23,6 @@ vendor/ruby
 config/database.yml
 public/pdf/*
 !.gitkeep
+
+.direnv/
+.envrc
