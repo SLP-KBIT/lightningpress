@@ -44,12 +44,6 @@ class LtRequestsController < ApplicationController
     redirect_to lt_requests_path
   end
 
-  def update
-    @request = Request.where(id: params[:id]).first
-    @request.update_attributes( requests_params )
-    redirect_to lt_requests_path
-  end
-
   private
 
   def request_params
