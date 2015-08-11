@@ -10,13 +10,13 @@ class LtRequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.contributor_id = @current_member.id
     if @request.presenter_id
-      @request.status = Request::Status::None
-    else
       @request.status = Request::Status::Waiting
       @notification = @request.build_request_notification(
         receiver_id: @request.presenter_id,
         response_status: RequestNotification::ResponseStatus::Unread
       )
+    else
+      @request.status = Request::Status::None
     end
     @request.save!
     redirect_to lt_requests_path
@@ -41,12 +41,6 @@ class LtRequestsController < ApplicationController
   def disable
     @request = Request.where(id: params[:id]).first
     @request.destroy
-    redirect_to lt_requests_path
-  end
-
-  def update
-    @request = Request.where(id: params[:id]).first
-    @request.update_attributes( requests_params )
     redirect_to lt_requests_path
   end
 
