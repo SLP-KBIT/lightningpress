@@ -8,6 +8,7 @@ LightningPress::Application.routes.draw do
   get "request_comments/:id/disable" => "request_comments#disable", as: :request_comments_disable
   put "candidates/:id/choose" => "candidates#choose", as: 'choose_candidate'
   get "request_to" => "lt_requests#request_to"
+  get "lightningtalks/list"
 
   root :to => "users#top"
   resources :users

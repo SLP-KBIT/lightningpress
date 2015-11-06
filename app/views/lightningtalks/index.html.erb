@@ -1,0 +1,20 @@
+<h1>LT一覧</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr href="top">
+      <th>タイトル</th>
+      <th>担当者</th>
+      <th>日付</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @list.each do |schedule| %>
+    <tr>
+      <td><%= link_to "#{schedule.name}", schedule %>
+      <td><%= schedule.member.account %></td>
+      <td><%= schedule.performance_date.strftime("%F") %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
