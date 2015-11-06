@@ -1,5 +1,5 @@
 class LightningtalksController < ApplicationController
-  before_action :find_lightningtalk, only: [:show, :update, :archive, :destroy]
+  before_action :find_lightningtalk, only: [:show, :update, :archive, :destroy, :index]
 
   def show
     @members = Member.all
@@ -24,6 +24,10 @@ class LightningtalksController < ApplicationController
     redirect_to lt_schedule_index_path
   end
 
+  def index
+   @list = Lightningtalk.all  
+  end
+  
   private
 
   def find_lightningtalk
