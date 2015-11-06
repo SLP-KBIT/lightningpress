@@ -62,4 +62,5 @@ gem 'simple_form'
 gem "paranoia", "~> 2.0"
 
 #Use fullcalendar
-gem 'fullcalendar-rails'
+gem 'fullcalendar-rails', '~> 2.0.2.0'
+
