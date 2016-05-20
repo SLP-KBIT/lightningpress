@@ -35,7 +35,6 @@ class LightningtalksController < ApplicationController
       :name,
       :member_id,
       :performance_date,
-      :content_path,
       :summary
     )
   end
